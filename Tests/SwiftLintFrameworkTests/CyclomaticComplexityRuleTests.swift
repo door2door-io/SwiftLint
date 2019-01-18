@@ -1,11 +1,3 @@
-//
-//  CyclomaticComplexityRuleTests.swift
-//  SwiftLint
-//
-//  Created by Mike Welles on 2/9/17.
-//  Copyright © 2017 Realm. All rights reserved.
-//
-
 import Foundation
 import SwiftLintFramework
 import XCTest
@@ -66,5 +58,4 @@ class CyclomaticComplexityRuleTests: XCTestCase {
         verifyRule(description, ruleConfiguration: ["ignores_case_statements": false],
                    commentDoesntViolate: true, stringDoesntViolate: true)
     }
-
 }

@@ -1,34 +1,43 @@
 
 # Rules
 
+* [AnyObject Protocol](#anyobject-protocol)
 * [Array Init](#array-init)
 * [Attributes](#attributes)
 * [Block Based KVO](#block-based-kvo)
 * [Class Delegate Protocol](#class-delegate-protocol)
 * [Closing Brace Spacing](#closing-brace-spacing)
+* [Closure Body Length](#closure-body-length)
 * [Closure End Indentation](#closure-end-indentation)
 * [Closure Parameter Position](#closure-parameter-position)
 * [Closure Spacing](#closure-spacing)
+* [Collection Element Alignment](#collection-element-alignment)
 * [Colon](#colon)
 * [Comma Spacing](#comma-spacing)
 * [Compiler Protocol Init](#compiler-protocol-init)
 * [Conditional Returns on Newline](#conditional-returns-on-newline)
 * [Contains over first not nil](#contains-over-first-not-nil)
 * [Control Statement](#control-statement)
+* [Convenience Type](#convenience-type)
 * [Custom Rules](#custom-rules)
 * [Cyclomatic Complexity](#cyclomatic-complexity)
 * [Discarded Notification Center Observer](#discarded-notification-center-observer)
 * [Discouraged Direct Initialization](#discouraged-direct-initialization)
 * [Discouraged Object Literal](#discouraged-object-literal)
 * [Discouraged Optional Boolean](#discouraged-optional-boolean)
+* [Discouraged Optional Collection](#discouraged-optional-collection)
+* [Duplicate Imports](#duplicate-imports)
 * [Dynamic Inline](#dynamic-inline)
 * [Empty Count](#empty-count)
 * [Empty Enum Arguments](#empty-enum-arguments)
 * [Empty Parameters](#empty-parameters)
 * [Empty Parentheses with Trailing Closure](#empty-parentheses-with-trailing-closure)
+* [Empty String](#empty-string)
+* [Empty XCTest Method](#empty-xctest-method)
 * [Explicit ACL](#explicit-acl)
 * [Explicit Enum Raw Value](#explicit-enum-raw-value)
 * [Explicit Init](#explicit-init)
+* [Explicit Self](#explicit-self)
 * [Explicit Top Level ACL](#explicit-top-level-acl)
 * [Explicit Type Interface](#explicit-type-interface)
 * [Extension Access Modifier](#extension-access-modifier)
@@ -36,36 +45,51 @@
 * [Fatal Error Message](#fatal-error-message)
 * [File Header](#file-header)
 * [File Line Length](#file-line-length)
+* [File Name](#file-name)
 * [First Where](#first-where)
 * [For Where](#for-where)
 * [Force Cast](#force-cast)
 * [Force Try](#force-try)
 * [Force Unwrapping](#force-unwrapping)
 * [Function Body Length](#function-body-length)
+* [Function Default Parameter at End](#function-default-parameter-at-end)
 * [Function Parameter Count](#function-parameter-count)
 * [Generic Type Name](#generic-type-name)
+* [Identical Operands](#identical-operands)
 * [Identifier Name](#identifier-name)
 * [Implicit Getter](#implicit-getter)
 * [Implicit Return](#implicit-return)
 * [Implicitly Unwrapped Optional](#implicitly-unwrapped-optional)
+* [Inert Defer](#inert-defer)
 * [Is Disjoint](#is-disjoint)
 * [Joined Default Parameter](#joined-default-parameter)
 * [Large Tuple](#large-tuple)
+* [Last Where](#last-where)
 * [Leading Whitespace](#leading-whitespace)
 * [Legacy CGGeometry Functions](#legacy-cggeometry-functions)
 * [Legacy Constant](#legacy-constant)
 * [Legacy Constructor](#legacy-constructor)
+* [Legacy Hashing](#legacy-hashing)
 * [Legacy NSGeometry Functions](#legacy-nsgeometry-functions)
+* [Legacy Random](#legacy-random)
 * [Variable Declaration Whitespace](#variable-declaration-whitespace)
 * [Line Length](#line-length)
 * [Literal Expression End Indentation](#literal-expression-end-indentation)
+* [Lower ACL than parent](#lower-acl-than-parent)
 * [Mark](#mark)
+* [Missing Docs](#missing-docs)
+* [Modifier Order](#modifier-order)
 * [Multiline Arguments](#multiline-arguments)
+* [Multiline Arguments Brackets](#multiline-arguments-brackets)
+* [Multiline Function Chains](#multiline-function-chains)
+* [Multiline Literal Brackets](#multiline-literal-brackets)
 * [Multiline Parameters](#multiline-parameters)
+* [Multiline Parameters Brackets](#multiline-parameters-brackets)
 * [Multiple Closures with Trailing Closure](#multiple-closures-with-trailing-closure)
 * [Nesting](#nesting)
 * [Nimble Operator](#nimble-operator)
 * [No Extension Access Modifier](#no-extension-access-modifier)
+* [No Fallthrough Only](#no-fallthrough-only)
 * [No Grouping Extension](#no-grouping-extension)
 * [Notification Center Detachment](#notification-center-detachment)
 * [Number Separator](#number-separator)
@@ -81,6 +105,7 @@
 * [Private Outlets](#private-outlets)
 * [Private over fileprivate](#private-over-fileprivate)
 * [Private Unit Test](#private-unit-test)
+* [Prohibited Interface Builder](#prohibited-interface-builder)
 * [Prohibited calls to super](#prohibited-calls-to-super)
 * [Protocol Property Accessors Order](#protocol-property-accessors-order)
 * [Quick Discouraged Call](#quick-discouraged-call)
@@ -88,8 +113,11 @@
 * [Quick Discouraged Pending Test](#quick-discouraged-pending-test)
 * [Redundant Discardable Let](#redundant-discardable-let)
 * [Redundant Nil Coalescing](#redundant-nil-coalescing)
+* [Redundant @objc Attribute](#redundant-@objc-attribute)
 * [Redundant Optional Initialization](#redundant-optional-initialization)
+* [Redundant Set Access Control Rule](#redundant-set-access-control-rule)
 * [Redundant String Enum Value](#redundant-string-enum-value)
+* [Redundant Type Annotation](#redundant-type-annotation)
 * [Redundant Void Return](#redundant-void-return)
 * [Required Enum Case](#required-enum-case)
 * [Returning Whitespace](#returning-whitespace)
@@ -98,12 +126,15 @@
 * [Min or Max over Sorted First or Last](#min-or-max-over-sorted-first-or-last)
 * [Sorted Imports](#sorted-imports)
 * [Statement Position](#statement-position)
+* [Static Operator](#static-operator)
 * [Strict fileprivate](#strict-fileprivate)
+* [Strong IBOutlet](#strong-iboutlet)
 * [Superfluous Disable Command](#superfluous-disable-command)
 * [Switch and Case Statement Alignment](#switch-and-case-statement-alignment)
 * [Switch Case on Newline](#switch-case-on-newline)
 * [Syntactic Sugar](#syntactic-sugar)
 * [Todo](#todo)
+* [Toggle Bool](#toggle-bool)
 * [Trailing Closure](#trailing-closure)
 * [Trailing Comma](#trailing-comma)
 * [Trailing Newline](#trailing-newline)
@@ -111,28 +142,94 @@
 * [Trailing Whitespace](#trailing-whitespace)
 * [Type Body Length](#type-body-length)
 * [Type Name](#type-name)
+* [Unavailable Function](#unavailable-function)
 * [Unneeded Break in Switch](#unneeded-break-in-switch)
 * [Unneeded Parentheses in Closure Argument](#unneeded-parentheses-in-closure-argument)
+* [Untyped Error in Catch](#untyped-error-in-catch)
 * [Unused Closure Parameter](#unused-closure-parameter)
+* [Unused Control Flow Label](#unused-control-flow-label)
 * [Unused Enumerated](#unused-enumerated)
+* [Unused Import](#unused-import)
 * [Unused Optional Binding](#unused-optional-binding)
+* [Unused Private Declaration](#unused-private-declaration)
+* [Unused Setter Value](#unused-setter-value)
 * [Valid IBInspectable](#valid-ibinspectable)
 * [Vertical Parameter Alignment](#vertical-parameter-alignment)
 * [Vertical Parameter Alignment On Call](#vertical-parameter-alignment-on-call)
 * [Vertical Whitespace](#vertical-whitespace)
+* [Vertical Whitespace Between Cases](#vertical-whitespace-between-cases)
+* [Vertical Whitespace before Closing Braces](#vertical-whitespace-before-closing-braces)
+* [Vertical Whitespace after Opening Braces](#vertical-whitespace-after-opening-braces)
 * [Void Return](#void-return)
 * [Weak Delegate](#weak-delegate)
+* [XCTest Specific Matcher](#xctest-specific-matcher)
 * [XCTFail Message](#xctfail-message)
 * [Yoda condition rule](#yoda-condition-rule)
 --------
 
+## AnyObject Protocol
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`anyobject_protocol` | Disabled | Yes | lint | No | 4.1.0 
+
+Prefer using `AnyObject` over `class` for class-only protocols.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+protocol SomeProtocol {}
+
+```
+
+```swift
+protocol SomeClassOnlyProtocol: AnyObject {}
+
+```
+
+```swift
+protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {}
+
+```
+
+```swift
+@objc protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {}
+
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+protocol SomeClassOnlyProtocol: ↓class {}
+
+```
+
+```swift
+protocol SomeClassOnlyProtocol: ↓class, SomeInheritedProtocol {}
+
+```
+
+```swift
+@objc protocol SomeClassOnlyProtocol: ↓class, SomeInheritedProtocol {}
+
+```
+
+</details>
+
+
+
 ## Array Init
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`array_init` | Disabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`array_init` | Disabled | No | lint | No | 3.0.0 
 
-Prefer using Array(seq) than seq.map { $0 } to convert a sequence into an Array.
+Prefer using `Array(seq)` over `seq.map { $0 }` to convert a sequence into an Array.
 
 ### Examples
 
@@ -237,9 +334,9 @@ foo.something { RouteMapper.map($0) }
 
 ## Attributes
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`attributes` | Disabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`attributes` | Disabled | No | style | No | 3.0.0 
 
 Attributes should be on their own lines in functions and types, but on the same line as variables and imports.
 
@@ -407,6 +504,25 @@ func increase(f: @autoclosure () -> Int) -> Int
 
 ```swift
 func foo(completionHandler: @escaping () -> Void)
+```
+
+```swift
+private struct DefaultError: Error {}
+```
+
+```swift
+@testable import foo
+
+private let bar = 1
+```
+
+```swift
+import XCTest
+@testable import DeleteMe
+
+@available (iOS 11.0, *)
+class DeleteMeTests: XCTestCase {
+}
 ```
 
 </details>
@@ -580,9 +696,9 @@ func foo(completionHandler: @escaping () -> Void)
 
 ## Block Based KVO
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`block_based_kvo` | Enabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`block_based_kvo` | Enabled | No | idiomatic | No | 3.0.0 
 
 Prefer the new block based KVO API with keypaths when using Swift 3.2 or later.
 
@@ -603,17 +719,17 @@ let observer = foo.observe(\.value, options: [.new]) { (foo, change) in
 
 ```swift
 class Foo: NSObject {
-   override ↓func observeValue(forKeyPath keyPath: String?, of object: Any?,
-                               change: [NSKeyValueChangeKey : Any]?,
-                               context: UnsafeMutableRawPointer?) {}
+  override ↓func observeValue(forKeyPath keyPath: String?, of object: Any?,
+                              change: [NSKeyValueChangeKey : Any]?,
+                              context: UnsafeMutableRawPointer?) {}
 }
 ```
 
 ```swift
 class Foo: NSObject {
-   override ↓func observeValue(forKeyPath keyPath: String?, of object: Any?,
-                               change: Dictionary<NSKeyValueChangeKey, Any>?,
-                               context: UnsafeMutableRawPointer?) {}
+  override ↓func observeValue(forKeyPath keyPath: String?, of object: Any?,
+                              change: Dictionary<NSKeyValueChangeKey, Any>?,
+                              context: UnsafeMutableRawPointer?) {}
 }
 ```
 
@@ -623,9 +739,9 @@ class Foo: NSObject {
 
 ## Class Delegate Protocol
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`class_delegate_protocol` | Enabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`class_delegate_protocol` | Enabled | No | lint | No | 3.0.0 
 
 Delegate protocols should be class-only so they can be weakly referenced.
 
@@ -700,9 +816,9 @@ protocol FooDelegate: NSObjectProtocol {}
 
 ## Closing Brace Spacing
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`closing_brace` | Enabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`closing_brace` | Enabled | Yes | style | No | 3.0.0 
 
 Closing brace with closing parenthesis should not have any whitespaces in the middle.
 
@@ -737,11 +853,564 @@ Closing brace with closing parenthesis should not have any whitespaces in the mi
 
 
 
+## Closure Body Length
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`closure_body_length` | Disabled | No | metrics | No | 4.2.0 
+
+Closure bodies should not span too many lines.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+foo.bar { $0 }
+```
+
+```swift
+foo.bar { toto in
+}
+```
+
+```swift
+foo.bar { toto in
+	let a = 0
+	// toto
+	// toto
+	// toto
+	// toto
+	// toto
+	// toto
+	// toto
+	// toto
+	// toto
+	// toto
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+```
+
+```swift
+foo.bar { toto in
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+}
+```
+
+```swift
+foo.bar { toto in
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	// toto
+	// toto
+	// toto
+	// toto
+	// toto
+	// toto
+	// toto
+	// toto
+	// toto
+	// toto
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+```
+
+```swift
+foo.bar({ toto in
+})
+```
+
+```swift
+foo.bar({ toto in
+	let a = 0
+})
+```
+
+```swift
+foo.bar({ toto in
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+})
+```
+
+```swift
+foo.bar(label: { toto in
+})
+```
+
+```swift
+foo.bar(label: { toto in
+	let a = 0
+})
+```
+
+```swift
+foo.bar(label: { toto in
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+})
+```
+
+```swift
+foo.bar(label: { toto in
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+}, anotherLabel: { toto in
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+})
+```
+
+```swift
+foo.bar(label: { toto in
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+}) { toto in
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+}
+```
+
+```swift
+let foo: Bar = { toto in
+	let bar = Bar()
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	return bar
+}()
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+foo.bar ↓{ toto in
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+}
+```
+
+```swift
+foo.bar ↓{ toto in
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	// toto
+	// toto
+	// toto
+	// toto
+	// toto
+	// toto
+	// toto
+	// toto
+	// toto
+	// toto
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+```
+
+```swift
+foo.bar(↓{ toto in
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+})
+```
+
+```swift
+foo.bar(label: ↓{ toto in
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+})
+```
+
+```swift
+foo.bar(label: ↓{ toto in
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+}, anotherLabel: ↓{ toto in
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+})
+```
+
+```swift
+foo.bar(label: ↓{ toto in
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+}) ↓{ toto in
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+}
+```
+
+```swift
+let foo: Bar = ↓{ toto in
+	let bar = Bar()
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	let a = 0
+	return bar
+}()
+```
+
+</details>
+
+
+
 ## Closure End Indentation
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`closure_end_indentation` | Disabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`closure_end_indentation` | Disabled | Yes | style | No | 3.0.0 
 
 Closure end should have the same indentation as the line that started it.
 
@@ -789,6 +1458,32 @@ foo(abc, 123)
 
 ```
 
+```swift
+function(
+    closure: { x in
+        print(x)
+    },
+    anotherClosure: { y in
+        print(y)
+    })
+```
+
+```swift
+function(parameter: param,
+         closure: { x in
+    print(x)
+})
+```
+
+```swift
+function(parameter: param, closure: { x in
+        print(x)
+    },
+    anotherClosure: { y in
+        print(y)
+    })
+```
+
 </details>
 <details>
 <summary>Triggering Examples</summary>
@@ -810,15 +1505,25 @@ return match(pattern: pattern, with: [.comment]).flatMap { range in
 
 ```
 
+```swift
+function(
+    closure: { x in
+        print(x)
+↓},
+    anotherClosure: { y in
+        print(y)
+↓})
+```
+
 </details>
 
 
 
 ## Closure Parameter Position
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`closure_parameter_position` | Enabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`closure_parameter_position` | Enabled | No | style | No | 3.0.0 
 
 Closure parameters should be on the same line as opening brace.
 
@@ -966,9 +1671,9 @@ let mediaView: UIView = { [weak self] index in
 
 ## Closure Spacing
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`closure_spacing` | Disabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`closure_spacing` | Disabled | Yes | style | No | 3.0.0 
 
 Closure expressions should have a single space inside each brace.
 
@@ -1017,11 +1722,134 @@ filter ↓{ sorted ↓{ $0 < $1}}
 
 
 
+## Collection Element Alignment
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`collection_alignment` | Disabled | No | style | No | 3.0.0 
+
+All elements in a collection literal should be vertically aligned
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+doThings(arg: [
+    "foo": 1,
+    "bar": 2,
+    "fizz": 2,
+    "buzz": 2
+])
+```
+
+```swift
+let abc = [
+    "alpha": "a",
+    "beta": "b",
+    "gamma": "g",
+    "delta": "d",
+    "epsilon": "e"
+]
+```
+
+```swift
+let meals = [
+                "breakfast": "oatmeal",
+                "lunch": "sandwich",
+                "dinner": "burger"
+]
+```
+
+```swift
+let coordinates = [
+    CLLocationCoordinate2D(latitude: 0, longitude: 33),
+    CLLocationCoordinate2D(latitude: 0, longitude: 66),
+    CLLocationCoordinate2D(latitude: 0, longitude: 99)
+]
+```
+
+```swift
+var evenNumbers: Set<Int> = [
+    2,
+    4,
+    6
+]
+```
+
+```swift
+let abc = [1, 2, 3, 4]
+```
+
+```swift
+let abc = [
+    1, 2, 3, 4
+]
+```
+
+```swift
+let abc = [
+    "foo": "bar", "fizz": "buzz"
+]
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+doThings(arg: [
+    "foo": 1,
+    "bar": 2,
+   ↓"fizz": 2,
+   ↓"buzz": 2
+])
+```
+
+```swift
+let abc = [
+    "alpha": "a",
+     ↓"beta": "b",
+    "gamma": "g",
+    "delta": "d",
+  ↓"epsilon": "e"
+]
+```
+
+```swift
+let meals = [
+                "breakfast": "oatmeal",
+                "lunch": "sandwich",
+    ↓"dinner": "burger"
+]
+```
+
+```swift
+let coordinates = [
+    CLLocationCoordinate2D(latitude: 0, longitude: 33),
+        ↓CLLocationCoordinate2D(latitude: 0, longitude: 66),
+    CLLocationCoordinate2D(latitude: 0, longitude: 99)
+]
+```
+
+```swift
+var evenNumbers: Set<Int> = [
+    2,
+  ↓4,
+    6
+]
+```
+
+</details>
+
+
+
 ## Colon
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`colon` | Enabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`colon` | Enabled | Yes | style | No | 3.0.0 
 
 Colons should be next to the identifier when specifying a type and next to the key in dictionary literals.
 
@@ -1430,9 +2258,9 @@ func foo() { let dict = [1↓ : 1] }
 
 ## Comma Spacing
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`comma` | Enabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`comma` | Enabled | Yes | style | No | 3.0.0 
 
 There should be no space before and one after any comma.
 
@@ -1471,6 +2299,10 @@ func abc(
 
 ```
 
+```swift
+#imageLiteral(resourceName: "foo,bar,baz")
+```
+
 </details>
 <details>
 <summary>Triggering Examples</summary>
@@ -1505,9 +2337,9 @@ let result = plus(
 
 ## Compiler Protocol Init
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`compiler_protocol_init` | Enabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`compiler_protocol_init` | Enabled | No | lint | No | 3.0.0 
 
 The initializers declared in compiler protocols such as `ExpressibleByArrayLiteral` shouldn't be called directly.
 
@@ -1546,9 +2378,9 @@ let set = ↓Set.init(arrayLiteral: 1, 2)
 
 ## Conditional Returns on Newline
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`conditional_returns_on_newline` | Disabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`conditional_returns_on_newline` | Disabled | No | style | No | 3.0.0 
 
 Conditional statements should always return on the next line
 
@@ -1625,9 +2457,9 @@ if true { // return }
 
 ## Contains over first not nil
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`contains_over_first_not_nil` | Disabled | No | performance
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`contains_over_first_not_nil` | Disabled | No | performance | No | 3.0.0 
 
 Prefer `contains` over `first(where:) != nil`
 
@@ -1686,11 +2518,11 @@ let first = myList.first { $0 % 2 == 0 }
 
 ## Control Statement
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`control_statement` | Enabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`control_statement` | Enabled | No | style | No | 3.0.0 
 
-if,for,while,do,catch statements shouldn't wrap their conditionals or arguments in parentheses.
+`if`, `for`, `guard`, `switch`, `while`, and `catch` statements shouldn't unnecessarily wrap their conditionals or arguments in parentheses.
 
 ### Examples
 
@@ -1782,6 +2614,16 @@ do {
 foo().catch(all: true) {}
 ```
 
+```swift
+if max(a, b) < c {
+
+```
+
+```swift
+switch (lhs, rhs) {
+
+```
+
 </details>
 <details>
 <summary>Triggering Examples</summary>
@@ -1793,6 +2635,11 @@ foo().catch(all: true) {}
 
 ```swift
 ↓if(condition) {
+
+```
+
+```swift
+↓if (condition == endIndex) {
 
 ```
 
@@ -1872,15 +2719,90 @@ do {
 }
 ```
 
+```swift
+↓if (max(a, b) < c) {
+
+```
+
+</details>
+
+
+
+## Convenience Type
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`convenience_type` | Disabled | No | idiomatic | No | 4.1.0 
+
+Types used for hosting only static members should be implemented as a caseless enum to avoid instantiation.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+enum Math { // enum
+  public static let pi = 3.14
+}
+```
+
+```swift
+// class with inheritance
+class MathViewController: UIViewController {
+  public static let pi = 3.14
+}
+```
+
+```swift
+@objc class Math: NSObject { // class visible to Obj-C
+  public static let pi = 3.14
+}
+```
+
+```swift
+struct Math { // type with non-static declarations
+  public static let pi = 3.14
+  public let randomNumber = 2
+}
+```
+
+```swift
+class DummyClass {}
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+↓struct Math {
+  public static let pi = 3.14
+}
+```
+
+```swift
+↓class Math {
+  public static let pi = 3.14
+}
+```
+
+```swift
+↓struct Math {
+  public static let pi = 3.14
+  @available(*, unavailable) init() {}
+}
+```
+
 </details>
 
 
 
 ## Custom Rules
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`custom_rules` | Enabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`custom_rules` | Enabled | No | style | No | 3.0.0 
 
 Create custom rules by providing a regex string. Optionally specify what syntax kinds to match against, the severity level, and what message to display.
 
@@ -1888,9 +2810,9 @@ Create custom rules by providing a regex string. Optionally specify what syntax 
 
 ## Cyclomatic Complexity
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`cyclomatic_complexity` | Enabled | No | metrics
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`cyclomatic_complexity` | Enabled | No | metrics | No | 3.0.0 
 
 Complexity of function bodies should be limited.
 
@@ -1964,9 +2886,9 @@ if true {}; if true {}; if true {}; if true {}; if true {}
 
 ## Discarded Notification Center Observer
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`discarded_notification_center_observer` | Enabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`discarded_notification_center_observer` | Enabled | No | lint | No | 3.0.0 
 
 When registering for a notification using a block, the opaque observer that is returned should be stored so it can be removed later.
 
@@ -2019,9 +2941,9 @@ func foo() -> Any {
 
 ## Discouraged Direct Initialization
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`discouraged_direct_init` | Enabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`discouraged_direct_init` | Enabled | No | lint | No | 3.0.0 
 
 Discouraged direct initialization of types that can be harmful.
 
@@ -2104,9 +3026,9 @@ let foo = bar(bundle: ↓Bundle.init(), device: ↓UIDevice.init())
 
 ## Discouraged Object Literal
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`discouraged_object_literal` | Disabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`discouraged_object_literal` | Disabled | No | idiomatic | No | 3.0.0 
 
 Prefer initializers over object literals.
 
@@ -2157,9 +3079,9 @@ let color = ↓#colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200
 
 ## Discouraged Optional Boolean
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`discouraged_optional_boolean` | Disabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`discouraged_optional_boolean` | Disabled | No | idiomatic | No | 3.0.0 
 
 Prefer non-optional booleans over optional booleans.
 
@@ -2788,11 +3710,1127 @@ enum Foo {
 
 
 
+## Discouraged Optional Collection
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`discouraged_optional_collection` | Disabled | No | idiomatic | No | 3.0.0 
+
+Prefer empty collection over optional collection.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+var foo: [Int]
+```
+
+```swift
+var foo: [String: Int]
+```
+
+```swift
+var foo: Set<String>
+```
+
+```swift
+var foo: [String: [String: Int]]
+```
+
+```swift
+let foo: [Int] = []
+```
+
+```swift
+let foo: [String: Int] = [:]
+```
+
+```swift
+let foo: Set<String> = []
+```
+
+```swift
+let foo: [String: [String: Int]] = [:]
+```
+
+```swift
+var foo: [Int] { return [] }
+```
+
+```swift
+func foo() -> [Int] {}
+```
+
+```swift
+func foo() -> [String: String] {}
+```
+
+```swift
+func foo() -> Set<Int> {}
+```
+
+```swift
+func foo() -> ([Int]) -> String {}
+```
+
+```swift
+func foo(input: [String] = []) {}
+```
+
+```swift
+func foo(input: [String: String] = [:]) {}
+```
+
+```swift
+func foo(input: Set<String> = []) {}
+```
+
+```swift
+class Foo {
+	func foo() -> [Int] {}
+}
+```
+
+```swift
+class Foo {
+	func foo() -> [String: String] {}
+}
+```
+
+```swift
+class Foo {
+	func foo() -> Set<Int> {}
+}
+```
+
+```swift
+class Foo {
+	func foo() -> ([Int]) -> String {}
+}
+```
+
+```swift
+struct Foo {
+	func foo() -> [Int] {}
+}
+```
+
+```swift
+struct Foo {
+	func foo() -> [String: String] {}
+}
+```
+
+```swift
+struct Foo {
+	func foo() -> Set<Int> {}
+}
+```
+
+```swift
+struct Foo {
+	func foo() -> ([Int]) -> String {}
+}
+```
+
+```swift
+enum Foo {
+	func foo() -> [Int] {}
+}
+```
+
+```swift
+enum Foo {
+	func foo() -> [String: String] {}
+}
+```
+
+```swift
+enum Foo {
+	func foo() -> Set<Int> {}
+}
+```
+
+```swift
+enum Foo {
+	func foo() -> ([Int]) -> String {}
+}
+```
+
+```swift
+class Foo {
+	func foo(input: [String] = []) {}
+}
+```
+
+```swift
+class Foo {
+	func foo(input: [String: String] = [:]) {}
+}
+```
+
+```swift
+class Foo {
+	func foo(input: Set<String> = []) {}
+}
+```
+
+```swift
+struct Foo {
+	func foo(input: [String] = []) {}
+}
+```
+
+```swift
+struct Foo {
+	func foo(input: [String: String] = [:]) {}
+}
+```
+
+```swift
+struct Foo {
+	func foo(input: Set<String> = []) {}
+}
+```
+
+```swift
+enum Foo {
+	func foo(input: [String] = []) {}
+}
+```
+
+```swift
+enum Foo {
+	func foo(input: [String: String] = [:]) {}
+}
+```
+
+```swift
+enum Foo {
+	func foo(input: Set<String> = []) {}
+}
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+↓var foo: [Int]?
+```
+
+```swift
+↓var foo: [String: Int]?
+```
+
+```swift
+↓var foo: Set<String>?
+```
+
+```swift
+↓let foo: [Int]? = nil
+```
+
+```swift
+↓let foo: [String: Int]? = nil
+```
+
+```swift
+↓let foo: Set<String>? = nil
+```
+
+```swift
+↓var foo: [Int]? { return nil }
+```
+
+```swift
+↓let foo: [Int]? { return nil }()
+```
+
+```swift
+func ↓foo() -> [T]? {}
+```
+
+```swift
+func ↓foo() -> [String: String]? {}
+```
+
+```swift
+func ↓foo() -> [String: [String: String]]? {}
+```
+
+```swift
+func ↓foo() -> [String: [String: String]?] {}
+```
+
+```swift
+func ↓foo() -> Set<Int>? {}
+```
+
+```swift
+static func ↓foo() -> [T]? {}
+```
+
+```swift
+static func ↓foo() -> [String: String]? {}
+```
+
+```swift
+static func ↓foo() -> [String: [String: String]]? {}
+```
+
+```swift
+static func ↓foo() -> [String: [String: String]?] {}
+```
+
+```swift
+static func ↓foo() -> Set<Int>? {}
+```
+
+```swift
+func ↓foo() -> ([Int]?) -> String {}
+```
+
+```swift
+func ↓foo() -> ([Int]) -> [String]? {}
+```
+
+```swift
+func foo(↓input: [String: String]?) {}
+```
+
+```swift
+func foo(↓input: [String: [String: String]]?) {}
+```
+
+```swift
+func foo(↓input: [String: [String: String]?]) {}
+```
+
+```swift
+func foo(↓↓input: [String: [String: String]?]?) {}
+```
+
+```swift
+func foo<K, V>(_ dict1: [K: V], ↓_ dict2: [K: V]?) -> [K: V]
+```
+
+```swift
+func foo<K, V>(dict1: [K: V], ↓dict2: [K: V]?) -> [K: V]
+```
+
+```swift
+static func foo(↓input: [String: String]?) {}
+```
+
+```swift
+static func foo(↓input: [String: [String: String]]?) {}
+```
+
+```swift
+static func foo(↓input: [String: [String: String]?]) {}
+```
+
+```swift
+static func foo(↓↓input: [String: [String: String]?]?) {}
+```
+
+```swift
+static func foo<K, V>(_ dict1: [K: V], ↓_ dict2: [K: V]?) -> [K: V]
+```
+
+```swift
+static func foo<K, V>(dict1: [K: V], ↓dict2: [K: V]?) -> [K: V]
+```
+
+```swift
+class Foo {
+	↓var foo: [Int]?
+}
+```
+
+```swift
+class Foo {
+	↓var foo: [String: Int]?
+}
+```
+
+```swift
+class Foo {
+	↓var foo: Set<String>?
+}
+```
+
+```swift
+class Foo {
+	↓let foo: [Int]? = nil
+}
+```
+
+```swift
+class Foo {
+	↓let foo: [String: Int]? = nil
+}
+```
+
+```swift
+class Foo {
+	↓let foo: Set<String>? = nil
+}
+```
+
+```swift
+struct Foo {
+	↓var foo: [Int]?
+}
+```
+
+```swift
+struct Foo {
+	↓var foo: [String: Int]?
+}
+```
+
+```swift
+struct Foo {
+	↓var foo: Set<String>?
+}
+```
+
+```swift
+struct Foo {
+	↓let foo: [Int]? = nil
+}
+```
+
+```swift
+struct Foo {
+	↓let foo: [String: Int]? = nil
+}
+```
+
+```swift
+struct Foo {
+	↓let foo: Set<String>? = nil
+}
+```
+
+```swift
+class Foo {
+	↓var foo: [Int]? { return nil }
+}
+```
+
+```swift
+class Foo {
+	↓let foo: [Int]? { return nil }()
+}
+```
+
+```swift
+class Foo {
+	↓var foo: Set<String>? { return nil }
+}
+```
+
+```swift
+class Foo {
+	↓let foo: Set<String>? { return nil }()
+}
+```
+
+```swift
+struct Foo {
+	↓var foo: [Int]? { return nil }
+}
+```
+
+```swift
+struct Foo {
+	↓let foo: [Int]? { return nil }()
+}
+```
+
+```swift
+struct Foo {
+	↓var foo: Set<String>? { return nil }
+}
+```
+
+```swift
+struct Foo {
+	↓let foo: Set<String>? { return nil }()
+}
+```
+
+```swift
+enum Foo {
+	↓var foo: [Int]? { return nil }
+}
+```
+
+```swift
+enum Foo {
+	↓let foo: [Int]? { return nil }()
+}
+```
+
+```swift
+enum Foo {
+	↓var foo: Set<String>? { return nil }
+}
+```
+
+```swift
+enum Foo {
+	↓let foo: Set<String>? { return nil }()
+}
+```
+
+```swift
+class Foo {
+	func ↓foo() -> [T]? {}
+}
+```
+
+```swift
+class Foo {
+	func ↓foo() -> [String: String]? {}
+}
+```
+
+```swift
+class Foo {
+	func ↓foo() -> [String: [String: String]]? {}
+}
+```
+
+```swift
+class Foo {
+	func ↓foo() -> [String: [String: String]?] {}
+}
+```
+
+```swift
+class Foo {
+	func ↓foo() -> Set<Int>? {}
+}
+```
+
+```swift
+class Foo {
+	static func ↓foo() -> [T]? {}
+}
+```
+
+```swift
+class Foo {
+	static func ↓foo() -> [String: String]? {}
+}
+```
+
+```swift
+class Foo {
+	static func ↓foo() -> [String: [String: String]]? {}
+}
+```
+
+```swift
+class Foo {
+	static func ↓foo() -> [String: [String: String]?] {}
+}
+```
+
+```swift
+class Foo {
+	static func ↓foo() -> Set<Int>? {}
+}
+```
+
+```swift
+class Foo {
+	func ↓foo() -> ([Int]?) -> String {}
+}
+```
+
+```swift
+class Foo {
+	func ↓foo() -> ([Int]) -> [String]? {}
+}
+```
+
+```swift
+struct Foo {
+	func ↓foo() -> [T]? {}
+}
+```
+
+```swift
+struct Foo {
+	func ↓foo() -> [String: String]? {}
+}
+```
+
+```swift
+struct Foo {
+	func ↓foo() -> [String: [String: String]]? {}
+}
+```
+
+```swift
+struct Foo {
+	func ↓foo() -> [String: [String: String]?] {}
+}
+```
+
+```swift
+struct Foo {
+	func ↓foo() -> Set<Int>? {}
+}
+```
+
+```swift
+struct Foo {
+	static func ↓foo() -> [T]? {}
+}
+```
+
+```swift
+struct Foo {
+	static func ↓foo() -> [String: String]? {}
+}
+```
+
+```swift
+struct Foo {
+	static func ↓foo() -> [String: [String: String]]? {}
+}
+```
+
+```swift
+struct Foo {
+	static func ↓foo() -> [String: [String: String]?] {}
+}
+```
+
+```swift
+struct Foo {
+	static func ↓foo() -> Set<Int>? {}
+}
+```
+
+```swift
+struct Foo {
+	func ↓foo() -> ([Int]?) -> String {}
+}
+```
+
+```swift
+struct Foo {
+	func ↓foo() -> ([Int]) -> [String]? {}
+}
+```
+
+```swift
+enum Foo {
+	func ↓foo() -> [T]? {}
+}
+```
+
+```swift
+enum Foo {
+	func ↓foo() -> [String: String]? {}
+}
+```
+
+```swift
+enum Foo {
+	func ↓foo() -> [String: [String: String]]? {}
+}
+```
+
+```swift
+enum Foo {
+	func ↓foo() -> [String: [String: String]?] {}
+}
+```
+
+```swift
+enum Foo {
+	func ↓foo() -> Set<Int>? {}
+}
+```
+
+```swift
+enum Foo {
+	static func ↓foo() -> [T]? {}
+}
+```
+
+```swift
+enum Foo {
+	static func ↓foo() -> [String: String]? {}
+}
+```
+
+```swift
+enum Foo {
+	static func ↓foo() -> [String: [String: String]]? {}
+}
+```
+
+```swift
+enum Foo {
+	static func ↓foo() -> [String: [String: String]?] {}
+}
+```
+
+```swift
+enum Foo {
+	static func ↓foo() -> Set<Int>? {}
+}
+```
+
+```swift
+enum Foo {
+	func ↓foo() -> ([Int]?) -> String {}
+}
+```
+
+```swift
+enum Foo {
+	func ↓foo() -> ([Int]) -> [String]? {}
+}
+```
+
+```swift
+class Foo {
+	func foo(↓input: [String: String]?) {}
+}
+```
+
+```swift
+class Foo {
+	func foo(↓input: [String: [String: String]]?) {}
+}
+```
+
+```swift
+class Foo {
+	func foo(↓input: [String: [String: String]?]) {}
+}
+```
+
+```swift
+class Foo {
+	func foo(↓↓input: [String: [String: String]?]?) {}
+}
+```
+
+```swift
+class Foo {
+	func foo<K, V>(_ dict1: [K: V], ↓_ dict2: [K: V]?) -> [K: V]
+}
+```
+
+```swift
+class Foo {
+	func foo<K, V>(dict1: [K: V], ↓dict2: [K: V]?) -> [K: V]
+}
+```
+
+```swift
+class Foo {
+	static func foo(↓input: [String: String]?) {}
+}
+```
+
+```swift
+class Foo {
+	static func foo(↓input: [String: [String: String]]?) {}
+}
+```
+
+```swift
+class Foo {
+	static func foo(↓input: [String: [String: String]?]) {}
+}
+```
+
+```swift
+class Foo {
+	static func foo(↓↓input: [String: [String: String]?]?) {}
+}
+```
+
+```swift
+class Foo {
+	static func foo<K, V>(_ dict1: [K: V], ↓_ dict2: [K: V]?) -> [K: V]
+}
+```
+
+```swift
+class Foo {
+	static func foo<K, V>(dict1: [K: V], ↓dict2: [K: V]?) -> [K: V]
+}
+```
+
+```swift
+struct Foo {
+	func foo(↓input: [String: String]?) {}
+}
+```
+
+```swift
+struct Foo {
+	func foo(↓input: [String: [String: String]]?) {}
+}
+```
+
+```swift
+struct Foo {
+	func foo(↓input: [String: [String: String]?]) {}
+}
+```
+
+```swift
+struct Foo {
+	func foo(↓↓input: [String: [String: String]?]?) {}
+}
+```
+
+```swift
+struct Foo {
+	func foo<K, V>(_ dict1: [K: V], ↓_ dict2: [K: V]?) -> [K: V]
+}
+```
+
+```swift
+struct Foo {
+	func foo<K, V>(dict1: [K: V], ↓dict2: [K: V]?) -> [K: V]
+}
+```
+
+```swift
+struct Foo {
+	static func foo(↓input: [String: String]?) {}
+}
+```
+
+```swift
+struct Foo {
+	static func foo(↓input: [String: [String: String]]?) {}
+}
+```
+
+```swift
+struct Foo {
+	static func foo(↓input: [String: [String: String]?]) {}
+}
+```
+
+```swift
+struct Foo {
+	static func foo(↓↓input: [String: [String: String]?]?) {}
+}
+```
+
+```swift
+struct Foo {
+	static func foo<K, V>(_ dict1: [K: V], ↓_ dict2: [K: V]?) -> [K: V]
+}
+```
+
+```swift
+struct Foo {
+	static func foo<K, V>(dict1: [K: V], ↓dict2: [K: V]?) -> [K: V]
+}
+```
+
+```swift
+enum Foo {
+	func foo(↓input: [String: String]?) {}
+}
+```
+
+```swift
+enum Foo {
+	func foo(↓input: [String: [String: String]]?) {}
+}
+```
+
+```swift
+enum Foo {
+	func foo(↓input: [String: [String: String]?]) {}
+}
+```
+
+```swift
+enum Foo {
+	func foo(↓↓input: [String: [String: String]?]?) {}
+}
+```
+
+```swift
+enum Foo {
+	func foo<K, V>(_ dict1: [K: V], ↓_ dict2: [K: V]?) -> [K: V]
+}
+```
+
+```swift
+enum Foo {
+	func foo<K, V>(dict1: [K: V], ↓dict2: [K: V]?) -> [K: V]
+}
+```
+
+```swift
+enum Foo {
+	static func foo(↓input: [String: String]?) {}
+}
+```
+
+```swift
+enum Foo {
+	static func foo(↓input: [String: [String: String]]?) {}
+}
+```
+
+```swift
+enum Foo {
+	static func foo(↓input: [String: [String: String]?]) {}
+}
+```
+
+```swift
+enum Foo {
+	static func foo(↓↓input: [String: [String: String]?]?) {}
+}
+```
+
+```swift
+enum Foo {
+	static func foo<K, V>(_ dict1: [K: V], ↓_ dict2: [K: V]?) -> [K: V]
+}
+```
+
+```swift
+enum Foo {
+	static func foo<K, V>(dict1: [K: V], ↓dict2: [K: V]?) -> [K: V]
+}
+```
+
+</details>
+
+
+
+## Duplicate Imports
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`duplicate_imports` | Enabled | No | idiomatic | No | 3.0.0 
+
+Imports should be unique.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+import A
+import B
+import C
+```
+
+```swift
+import A.B
+import A.C
+```
+
+```swift
+#if DEBUG
+    @testable import KsApi
+#else
+    import KsApi
+#endif
+```
+
+```swift
+import A // module
+import B // module
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+import Foundation
+import Dispatch
+↓import Foundation
+```
+
+```swift
+import Foundation
+↓import Foundation.NSString
+```
+
+```swift
+↓import Foundation.NSString
+import Foundation
+```
+
+```swift
+↓import A.B.C
+import A.B
+```
+
+```swift
+import A.B
+↓import A.B.C
+```
+
+```swift
+import A
+#if DEBUG
+    @testable import KsApi
+#else
+    import KsApi
+#endif
+↓import A
+```
+
+```swift
+import A
+↓import typealias A.Foo
+```
+
+```swift
+import A
+↓import struct A.Foo
+```
+
+```swift
+import A
+↓import class A.Foo
+```
+
+```swift
+import A
+↓import enum A.Foo
+```
+
+```swift
+import A
+↓import protocol A.Foo
+```
+
+```swift
+import A
+↓import let A.Foo
+```
+
+```swift
+import A
+↓import var A.Foo
+```
+
+```swift
+import A
+↓import func A.Foo
+```
+
+```swift
+import A
+↓import typealias A.B.Foo
+```
+
+```swift
+import A
+↓import struct A.B.Foo
+```
+
+```swift
+import A
+↓import class A.B.Foo
+```
+
+```swift
+import A
+↓import enum A.B.Foo
+```
+
+```swift
+import A
+↓import protocol A.B.Foo
+```
+
+```swift
+import A
+↓import let A.B.Foo
+```
+
+```swift
+import A
+↓import var A.B.Foo
+```
+
+```swift
+import A
+↓import func A.B.Foo
+```
+
+```swift
+import A.B
+↓import typealias A.B.Foo
+```
+
+```swift
+import A.B
+↓import struct A.B.Foo
+```
+
+```swift
+import A.B
+↓import class A.B.Foo
+```
+
+```swift
+import A.B
+↓import enum A.B.Foo
+```
+
+```swift
+import A.B
+↓import protocol A.B.Foo
+```
+
+```swift
+import A.B
+↓import let A.B.Foo
+```
+
+```swift
+import A.B
+↓import var A.B.Foo
+```
+
+```swift
+import A.B
+↓import func A.B.Foo
+```
+
+</details>
+
+
+
 ## Dynamic Inline
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`dynamic_inline` | Enabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`dynamic_inline` | Enabled | No | lint | No | 3.0.0 
 
 Avoid using 'dynamic' and '@inline(__always)' together.
 
@@ -2859,9 +4897,9 @@ dynamic
 
 ## Empty Count
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`empty_count` | Disabled | No | performance
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`empty_count` | Disabled | No | performance | No | 3.0.0 
 
 Prefer checking `isEmpty` over comparing `count` to zero.
 
@@ -2887,6 +4925,21 @@ var count = 0
 
 ```swift
 [Int]().count == 1
+
+```
+
+```swift
+[Int]().count == 0xff
+
+```
+
+```swift
+[Int]().count == 0b01
+
+```
+
+```swift
+[Int]().count == 0o07
 
 ```
 
@@ -2920,6 +4973,26 @@ order.discount == 0
 ```
 
 ```swift
+[Int]().↓count == 0x0
+
+```
+
+```swift
+[Int]().↓count == 0x00_00
+
+```
+
+```swift
+[Int]().↓count == 0b00
+
+```
+
+```swift
+[Int]().↓count == 0o00
+
+```
+
+```swift
 ↓count == 0
 
 ```
@@ -2930,9 +5003,9 @@ order.discount == 0
 
 ## Empty Enum Arguments
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`empty_enum_arguments` | Enabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`empty_enum_arguments` | Enabled | Yes | style | No | 3.0.0 
 
 Arguments can be omitted when matching enums with associated types if they are not used.
 
@@ -3017,15 +5090,24 @@ switch foo {
 }
 ```
 
+```swift
+func example(foo: Foo) {
+    switch foo {
+    case case .bar↓(_):
+        break
+    }
+}
+```
+
 </details>
 
 
 
 ## Empty Parameters
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`empty_parameters` | Enabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`empty_parameters` | Enabled | Yes | style | No | 3.0.0 
 
 Prefer `() -> ` over `Void -> `.
 
@@ -3094,9 +5176,9 @@ let foo: ↓(Void) -> () throws -> Void)
 
 ## Empty Parentheses with Trailing Closure
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`empty_parentheses_with_trailing_closure` | Enabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`empty_parentheses_with_trailing_closure` | Enabled | Yes | style | No | 3.0.0 
 
 When using trailing closures, empty parentheses should be avoided after the method call.
 
@@ -3167,15 +5249,219 @@ UIView.animateWithDuration(0.3, animations: {
 
 ```
 
+```swift
+func foo() -> [Int] {
+    return [1, 2].map↓() { $0 + 1 }
+}
+
+```
+
+</details>
+
+
+
+## Empty String
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`empty_string` | Disabled | No | performance | No | 3.0.0 
+
+Prefer checking `isEmpty` over comparing `string` to an empty string literal.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+myString.isEmpty
+```
+
+```swift
+!myString.isEmpy
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+myString↓ == ""
+```
+
+```swift
+myString↓ != ""
+```
+
+</details>
+
+
+
+## Empty XCTest Method
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`empty_xctest_method` | Disabled | No | lint | No | 3.0.0 
+
+Empty XCTest method should be avoided.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+class TotoTests: XCTestCase {
+    var foobar: Foobar?
+
+    override func setUp() {
+        super.setUp()
+        foobar = Foobar()
+    }
+
+    override func tearDown() {
+        foobar = nil
+        super.tearDown()
+    }
+
+    func testFoo() {
+        XCTAssertTrue(foobar?.foo)
+    }
+
+    func testBar() {
+        // comment...
+
+        XCTAssertFalse(foobar?.bar)
+
+        // comment...
+    }
+}
+```
+
+```swift
+class Foobar {
+    func setUp() {}
+
+    func tearDown() {}
+
+    func testFoo() {}
+}
+```
+
+```swift
+class TotoTests: XCTestCase {
+    func setUp(with object: Foobar) {}
+
+    func tearDown(object: Foobar) {}
+
+    func testFoo(_ foo: Foobar) {}
+
+    func testBar(bar: (String) -> Int) {}
+}
+```
+
+```swift
+class TotoTests: XCTestCase {
+    func testFoo() { XCTAssertTrue(foobar?.foo) }
+
+    func testBar() { XCTAssertFalse(foobar?.bar) }
+}
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+class TotoTests: XCTestCase {
+    override ↓func setUp() {
+    }
+
+    override ↓func tearDown() {
+
+    }
+
+    ↓func testFoo() {
+
+
+    }
+
+    ↓func testBar() {
+
+
+
+    }
+
+    func helperFunction() {
+    }
+}
+```
+
+```swift
+class TotoTests: XCTestCase {
+    override ↓func setUp() {}
+
+    override ↓func tearDown() {}
+
+    ↓func testFoo() {}
+
+    func helperFunction() {}
+}
+```
+
+```swift
+class TotoTests: XCTestCase {
+    override ↓func setUp() {
+        // comment...
+    }
+
+    override ↓func tearDown() {
+        // comment...
+        // comment...
+    }
+
+    ↓func testFoo() {
+        // comment...
+
+        // comment...
+
+        // comment...
+    }
+
+    ↓func testBar() {
+        /*
+         * comment...
+         *
+         * comment...
+         *
+         * comment...
+         */
+    }
+
+    func helperFunction() {
+    }
+}
+```
+
+```swift
+class FooTests: XCTestCase {
+    override ↓func setUp() {}
+}
+
+class BarTests: XCTestCase {
+    ↓func testFoo() {}
+}
+```
+
 </details>
 
 
 
 ## Explicit ACL
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`explicit_acl` | Disabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`explicit_acl` | Disabled | No | idiomatic | No | 3.0.0 
 
 All declarations should specify Access Control Level keywords explicitly.
 
@@ -3211,7 +5497,9 @@ internal final class Foo {}
 
 ```swift
 internal
-class Foo {  private let bar = 5 }
+class Foo {
+  private let bar = 5
+}
 ```
 
 ```swift
@@ -3233,13 +5521,13 @@ private struct C { let d = 5 }
 
 ```swift
 internal protocol A {
-    func b()
+  func b()
 }
 ```
 
 ```swift
 internal protocol A {
-    var b: Int
+  var b: Int
 }
 ```
 
@@ -3288,9 +5576,9 @@ func b() {}
 
 ## Explicit Enum Raw Value
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`explicit_enum_raw_value` | Disabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`explicit_enum_raw_value` | Disabled | No | idiomatic | No | 3.0.0 
 
 Enums should be explicitly assigned their raw values.
 
@@ -3301,42 +5589,37 @@ Enums should be explicitly assigned their raw values.
 
 ```swift
 enum Numbers {
- case int(Int)
- case short(Int16)
+  case int(Int)
+  case short(Int16)
 }
-
 ```
 
 ```swift
 enum Numbers: Int {
- case one = 1
- case two = 2
+  case one = 1
+  case two = 2
 }
-
 ```
 
 ```swift
 enum Numbers: Double {
- case one = 1.1
- case two = 2.2
+  case one = 1.1
+  case two = 2.2
 }
-
 ```
 
 ```swift
 enum Numbers: String {
- case one = "one"
- case two = "two"
+  case one = "one"
+  case two = "two"
 }
-
 ```
 
 ```swift
 protocol Algebra {}
 enum Numbers: Algebra {
- case one
+  case one
 }
-
 ```
 
 </details>
@@ -3345,38 +5628,33 @@ enum Numbers: Algebra {
 
 ```swift
 enum Numbers: Int {
- case one = 10, ↓two, three = 30
+  case one = 10, ↓two, three = 30
 }
-
 ```
 
 ```swift
 enum Numbers: NSInteger {
- case ↓one
+  case ↓one
 }
-
 ```
 
 ```swift
 enum Numbers: String {
- case ↓one
- case ↓two
+  case ↓one
+  case ↓two
 }
-
 ```
 
 ```swift
 enum Numbers: String {
- case ↓one, two = "two"
+   case ↓one, two = "two"
 }
-
 ```
 
 ```swift
 enum Numbers: Decimal {
- case ↓one, ↓two
+  case ↓one, ↓two
 }
-
 ```
 
 </details>
@@ -3385,9 +5663,9 @@ enum Numbers: Decimal {
 
 ## Explicit Init
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`explicit_init` | Disabled | Yes | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`explicit_init` | Disabled | Yes | idiomatic | No | 3.0.0 
 
 Explicitly calling .init() should be avoided.
 
@@ -3416,6 +5694,18 @@ struct S { let n: Int }; extension S { init() { self.init(n: 1) } }
 [String.self].map { type in type.init(1) }
 ```
 
+```swift
+Observable.zip(obs1, obs2, resultSelector: MyType.init).asMaybe()
+```
+
+```swift
+Observable.zip(
+  obs1,
+  obs2,
+  resultSelector: MyType.init
+).asMaybe()
+```
+
 </details>
 <details>
 <summary>Triggering Examples</summary>
@@ -3428,15 +5718,86 @@ struct S { let n: Int }; extension S { init() { self.init(n: 1) } }
 [String.self].map { Type in Type↓.init(1) }
 ```
 
+```swift
+func foo() -> [String] {
+  return [1].flatMap { String↓.init($0) }
+}
+```
+
+```swift
+Observable.zip(
+  obs1,
+  obs2,
+  resultSelector: { MyType.init($0, $1) }
+).asMaybe()
+```
+
+</details>
+
+
+
+## Explicit Self
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`explicit_self` | Disabled | Yes | style | Yes | 3.0.0 
+
+Instance variables and functions should be explicitly accessed with 'self.'.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+struct A {
+    func f1() {}
+    func f2() {
+        self.f1()
+    }
+}
+```
+
+```swift
+struct A {
+    let p1: Int
+    func f1() {
+        _ = self.p1
+    }
+}
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+struct A {
+    func f1() {}
+    func f2() {
+        ↓f1()
+    }
+}
+```
+
+```swift
+struct A {
+    let p1: Int
+    func f1() {
+        _ = ↓p1
+    }
+}
+```
+
 </details>
 
 
 
 ## Explicit Top Level ACL
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`explicit_top_level_acl` | Disabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`explicit_top_level_acl` | Disabled | No | idiomatic | No | 3.0.0 
 
 Top-level declarations should specify Access Control Level keywords explicitly.
 
@@ -3516,9 +5877,9 @@ func b() {}
 
 ## Explicit Type Interface
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`explicit_type_interface` | Disabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`explicit_type_interface` | Disabled | No | idiomatic | No | 3.0.0 
 
 Properties should have a type interface
 
@@ -3531,28 +5892,24 @@ Properties should have a type interface
 class Foo {
   var myVar: Int? = 0
 }
-
 ```
 
 ```swift
 class Foo {
   let myVar: Int? = 0
 }
-
 ```
 
 ```swift
 class Foo {
   static var myVar: Int? = 0
 }
-
 ```
 
 ```swift
 class Foo {
   class var myVar: Int? = 0
 }
-
 ```
 
 </details>
@@ -3562,31 +5919,37 @@ class Foo {
 ```swift
 class Foo {
   ↓var myVar = 0
-
 }
-
 ```
 
 ```swift
 class Foo {
   ↓let mylet = 0
-
 }
-
 ```
 
 ```swift
 class Foo {
   ↓static var myStaticVar = 0
 }
-
 ```
 
 ```swift
 class Foo {
   ↓class var myClassVar = 0
 }
+```
 
+```swift
+class Foo {
+  ↓let myVar = Int(0)
+}
+```
+
+```swift
+class Foo {
+  ↓let myVar = Set<Int>(0)
+}
 ```
 
 </details>
@@ -3595,9 +5958,9 @@ class Foo {
 
 ## Extension Access Modifier
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`extension_access_modifier` | Disabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`extension_access_modifier` | Disabled | No | idiomatic | No | 3.0.0 
 
 Prefer to use extension access modifiers
 
@@ -3608,49 +5971,49 @@ Prefer to use extension access modifiers
 
 ```swift
 extension Foo: SomeProtocol {
-   public var bar: Int { return 1 }
+  public var bar: Int { return 1 }
 }
 ```
 
 ```swift
 extension Foo {
-   private var bar: Int { return 1 }
-   public var baz: Int { return 1 }
+  private var bar: Int { return 1 }
+  public var baz: Int { return 1 }
 }
 ```
 
 ```swift
 extension Foo {
-   private var bar: Int { return 1 }
-   public func baz() {}
+  private var bar: Int { return 1 }
+  public func baz() {}
 }
 ```
 
 ```swift
 extension Foo {
-   var bar: Int { return 1 }
-   var baz: Int { return 1 }
+  var bar: Int { return 1 }
+  var baz: Int { return 1 }
 }
 ```
 
 ```swift
 public extension Foo {
-   var bar: Int { return 1 }
-   var baz: Int { return 1 }
+  var bar: Int { return 1 }
+  var baz: Int { return 1 }
 }
 ```
 
 ```swift
 extension Foo {
-   private bar: Int { return 1 }
-   private baz: Int { return 1 }
+  private bar: Int { return 1 }
+  private baz: Int { return 1 }
 }
 ```
 
 ```swift
 extension Foo {
-   open bar: Int { return 1 }
-   open baz: Int { return 1 }
+  open bar: Int { return 1 }
+  open baz: Int { return 1 }
 }
 ```
 
@@ -3685,9 +6048,9 @@ public extension Foo {
 
 ## Fallthrough
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`fallthrough` | Enabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`fallthrough` | Disabled | No | idiomatic | No | 3.0.0 
 
 Fallthrough should be avoided.
 
@@ -3699,7 +6062,7 @@ Fallthrough should be avoided.
 ```swift
 switch foo {
 case .bar, .bar2, .bar3:
-    something()
+  something()
 }
 ```
 
@@ -3710,9 +6073,9 @@ case .bar, .bar2, .bar3:
 ```swift
 switch foo {
 case .bar:
-    ↓fallthrough
+  ↓fallthrough
 case .bar2:
-    something()
+  something()
 }
 ```
 
@@ -3722,9 +6085,9 @@ case .bar2:
 
 ## Fatal Error Message
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`fatal_error_message` | Disabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`fatal_error_message` | Disabled | No | idiomatic | No | 3.0.0 
 
 A fatalError call should have a message.
 
@@ -3737,14 +6100,12 @@ A fatalError call should have a message.
 func foo() {
   fatalError("Foo")
 }
-
 ```
 
 ```swift
 func foo() {
   fatalError(x)
 }
-
 ```
 
 </details>
@@ -3755,14 +6116,12 @@ func foo() {
 func foo() {
   ↓fatalError("")
 }
-
 ```
 
 ```swift
 func foo() {
   ↓fatalError()
 }
-
 ```
 
 </details>
@@ -3771,11 +6130,11 @@ func foo() {
 
 ## File Header
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`file_header` | Disabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`file_header` | Disabled | No | style | No | 3.0.0 
 
-Header comments should be consistent with project patterns.
+Header comments should be consistent with project patterns. The SWIFTLINT_CURRENT_FILENAME placeholder can optionally be used in the required and forbidden patterns. It will be replaced by the real file name.
 
 ### Examples
 
@@ -3825,9 +6184,9 @@ let foo = 2
 
 ## File Line Length
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`file_length` | Enabled | No | metrics
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`file_length` | Enabled | No | metrics | No | 3.0.0 
 
 Files should not span too many lines.
 
@@ -5058,11 +7417,21 @@ print("swiftlint")
 
 
 
+## File Name
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`file_name` | Disabled | No | idiomatic | No | 3.0.0 
+
+File name should match a type or extension declared in the file (if any).
+
+
+
 ## First Where
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`first_where` | Disabled | No | performance
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`first_where` | Disabled | No | performance | No | 3.0.0 
 
 Prefer using `.first(where:)` over `.filter { }.first` in collections.
 
@@ -5089,6 +7458,10 @@ match(pattern: pattern).filter { $0.first == .identifier }
 ```swift
 (myList.filter { $0 == 1 }.suffix(2)).first
 
+```
+
+```swift
+collection.filter("stringCol = '3'").first
 ```
 
 </details>
@@ -5137,9 +7510,9 @@ match(pattern: pattern).filter { $0.first == .identifier }
 
 ## For Where
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`for_where` | Enabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`for_where` | Enabled | No | idiomatic | No | 3.0.0 
 
 `where` clauses are preferred over a single `if` inside a `for`.
 
@@ -5150,76 +7523,66 @@ Identifier | Enabled by default | Supports autocorrection | Kind
 
 ```swift
 for user in users where user.id == 1 { }
-
 ```
 
 ```swift
 for user in users {
-   if let id = user.id { }
+  if let id = user.id { }
 }
-
 ```
 
 ```swift
 for user in users {
-   if var id = user.id { }
+  if var id = user.id { }
 }
-
 ```
 
 ```swift
 for user in users {
-   if user.id == 1 { } else { }
+  if user.id == 1 { } else { }
 }
-
 ```
 
 ```swift
 for user in users {
-   if user.id == 1 {
-} else if user.id == 2 { }
+  if user.id == 1 {
+  } else if user.id == 2 { }
 }
-
 ```
 
 ```swift
 for user in users {
-   if user.id == 1 { }
-   print(user)
+  if user.id == 1 { }
+  print(user)
 }
-
 ```
 
 ```swift
 for user in users {
-   let id = user.id
-   if id == 1 { }
+  let id = user.id
+  if id == 1 { }
 }
-
 ```
 
 ```swift
 for user in users {
-   if user.id == 1 { }
-   return true
+  if user.id == 1 { }
+  return true
 }
-
 ```
 
 ```swift
 for user in users {
-   if user.id == 1 && user.age > 18 { }
+  if user.id == 1 && user.age > 18 { }
 }
-
 ```
 
 ```swift
 for (index, value) in array.enumerated() {
-   if case .valueB(_) = value {
-       return index
-   }
+  if case .valueB(_) = value {
+    return index
+  }
 }
-
 ```
 
 </details>
@@ -5228,9 +7591,8 @@ for (index, value) in array.enumerated() {
 
 ```swift
 for user in users {
-   ↓if user.id == 1 { return true }
+  ↓if user.id == 1 { return true }
 }
-
 ```
 
 </details>
@@ -5239,9 +7601,9 @@ for user in users {
 
 ## Force Cast
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`force_cast` | Enabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`force_cast` | Enabled | No | idiomatic | No | 3.0.0 
 
 Force casts should be avoided.
 
@@ -5270,9 +7632,9 @@ NSNumber() ↓as! Int
 
 ## Force Try
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`force_try` | Enabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`force_try` | Enabled | No | idiomatic | No | 3.0.0 
 
 Force tries should be avoided.
 
@@ -5282,7 +7644,10 @@ Force tries should be avoided.
 <summary>Non Triggering Examples</summary>
 
 ```swift
-func a() throws {}; do { try a() } catch {}
+func a() throws {}
+do {
+  try a()
+} catch {}
 ```
 
 </details>
@@ -5290,7 +7655,8 @@ func a() throws {}; do { try a() } catch {}
 <summary>Triggering Examples</summary>
 
 ```swift
-func a() throws {}; ↓try! a()
+func a() throws {}
+↓try! a()
 ```
 
 </details>
@@ -5299,9 +7665,9 @@ func a() throws {}; ↓try! a()
 
 ## Force Unwrapping
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`force_unwrapping` | Disabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`force_unwrapping` | Disabled | No | idiomatic | No | 3.0.0 
 
 Force unwrapping should be avoided.
 
@@ -5442,19 +7808,83 @@ open var computed: String { return foo.bar↓! }
 
 ## Function Body Length
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`function_body_length` | Enabled | No | metrics
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`function_body_length` | Enabled | No | metrics | No | 3.0.0 
 
 Functions bodies should not span too many lines.
 
 
 
+## Function Default Parameter at End
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`function_default_parameter_at_end` | Disabled | No | idiomatic | No | 3.0.0 
+
+Prefer to locate parameters with defaults toward the end of the parameter list.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+func foo(baz: String, bar: Int = 0) {}
+```
+
+```swift
+func foo(x: String, y: Int = 0, z: CGFloat = 0) {}
+```
+
+```swift
+func foo(bar: String, baz: Int = 0, z: () -> Void) {}
+```
+
+```swift
+func foo(bar: String, z: () -> Void, baz: Int = 0) {}
+```
+
+```swift
+func foo(bar: Int = 0) {}
+```
+
+```swift
+func foo() {}
+```
+
+```swift
+class A: B {
+  override func foo(bar: Int = 0, baz: String) {}
+```
+
+```swift
+func foo(bar: Int = 0, completion: @escaping CompletionHandler) {}
+```
+
+```swift
+func foo(a: Int, b: CGFloat = 0) {
+  let block = { (error: Error?) in }
+}
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+↓func foo(bar: Int = 0, baz: String) {}
+```
+
+</details>
+
+
+
 ## Function Parameter Count
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`function_parameter_count` | Enabled | No | metrics
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`function_parameter_count` | Enabled | No | metrics | No | 3.0.0 
 
 Number of function parameters should be low.
 
@@ -5532,9 +7962,9 @@ init(a: Int, b: Int, c: Int, d: Int, e: Int, f: Int) {}
 
 ## Generic Type Name
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`generic_type_name` | Enabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`generic_type_name` | Enabled | No | idiomatic | No | 3.0.0 
 
 Generic type name should only contain alphanumeric characters, start with an uppercase character and span between 1 and 20 characters in length.
 
@@ -5648,7 +8078,7 @@ typealias BackwardTriple<T1, ↓T2_Bar, T3> = (T3, T2_Bar, T1)
 ```
 
 ```swift
-typealias DictionaryOfStrings<↓T_Foo: Hashable> = Dictionary<T, String>
+typealias DictionaryOfStrings<↓T_Foo: Hashable> = Dictionary<T_Foo, String>
 
 ```
 
@@ -5731,11 +8161,656 @@ enum Foo<↓type> {}
 
 
 
+## Identical Operands
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`identical_operands` | Disabled | No | lint | No | 3.0.0 
+
+Comparing two identical operands is likely a mistake.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+1 == 2
+```
+
+```swift
+foo == bar
+```
+
+```swift
+prefixedFoo == foo
+```
+
+```swift
+foo.aProperty == foo.anotherProperty
+```
+
+```swift
+self.aProperty == self.anotherProperty
+```
+
+```swift
+"1 == 1"
+```
+
+```swift
+self.aProperty == aProperty
+```
+
+```swift
+lhs.aProperty == rhs.aProperty
+```
+
+```swift
+lhs.identifier == rhs.identifier
+```
+
+```swift
+i == index
+```
+
+```swift
+$0 == 0
+```
+
+```swift
+keyValues?.count ?? 0 == 0
+```
+
+```swift
+string == string.lowercased()
+```
+
+```swift
+let num: Int? = 0
+_ = num != nil && num == num?.byteSwapped
+```
+
+```swift
+1 != 2
+```
+
+```swift
+foo != bar
+```
+
+```swift
+prefixedFoo != foo
+```
+
+```swift
+foo.aProperty != foo.anotherProperty
+```
+
+```swift
+self.aProperty != self.anotherProperty
+```
+
+```swift
+"1 != 1"
+```
+
+```swift
+self.aProperty != aProperty
+```
+
+```swift
+lhs.aProperty != rhs.aProperty
+```
+
+```swift
+lhs.identifier != rhs.identifier
+```
+
+```swift
+i != index
+```
+
+```swift
+$0 != 0
+```
+
+```swift
+keyValues?.count ?? 0 != 0
+```
+
+```swift
+string != string.lowercased()
+```
+
+```swift
+let num: Int? = 0
+_ = num != nil && num != num?.byteSwapped
+```
+
+```swift
+1 === 2
+```
+
+```swift
+foo === bar
+```
+
+```swift
+prefixedFoo === foo
+```
+
+```swift
+foo.aProperty === foo.anotherProperty
+```
+
+```swift
+self.aProperty === self.anotherProperty
+```
+
+```swift
+"1 === 1"
+```
+
+```swift
+self.aProperty === aProperty
+```
+
+```swift
+lhs.aProperty === rhs.aProperty
+```
+
+```swift
+lhs.identifier === rhs.identifier
+```
+
+```swift
+i === index
+```
+
+```swift
+$0 === 0
+```
+
+```swift
+keyValues?.count ?? 0 === 0
+```
+
+```swift
+string === string.lowercased()
+```
+
+```swift
+let num: Int? = 0
+_ = num != nil && num === num?.byteSwapped
+```
+
+```swift
+1 !== 2
+```
+
+```swift
+foo !== bar
+```
+
+```swift
+prefixedFoo !== foo
+```
+
+```swift
+foo.aProperty !== foo.anotherProperty
+```
+
+```swift
+self.aProperty !== self.anotherProperty
+```
+
+```swift
+"1 !== 1"
+```
+
+```swift
+self.aProperty !== aProperty
+```
+
+```swift
+lhs.aProperty !== rhs.aProperty
+```
+
+```swift
+lhs.identifier !== rhs.identifier
+```
+
+```swift
+i !== index
+```
+
+```swift
+$0 !== 0
+```
+
+```swift
+keyValues?.count ?? 0 !== 0
+```
+
+```swift
+string !== string.lowercased()
+```
+
+```swift
+let num: Int? = 0
+_ = num != nil && num !== num?.byteSwapped
+```
+
+```swift
+1 > 2
+```
+
+```swift
+foo > bar
+```
+
+```swift
+prefixedFoo > foo
+```
+
+```swift
+foo.aProperty > foo.anotherProperty
+```
+
+```swift
+self.aProperty > self.anotherProperty
+```
+
+```swift
+"1 > 1"
+```
+
+```swift
+self.aProperty > aProperty
+```
+
+```swift
+lhs.aProperty > rhs.aProperty
+```
+
+```swift
+lhs.identifier > rhs.identifier
+```
+
+```swift
+i > index
+```
+
+```swift
+$0 > 0
+```
+
+```swift
+keyValues?.count ?? 0 > 0
+```
+
+```swift
+string > string.lowercased()
+```
+
+```swift
+let num: Int? = 0
+_ = num != nil && num > num?.byteSwapped
+```
+
+```swift
+1 >= 2
+```
+
+```swift
+foo >= bar
+```
+
+```swift
+prefixedFoo >= foo
+```
+
+```swift
+foo.aProperty >= foo.anotherProperty
+```
+
+```swift
+self.aProperty >= self.anotherProperty
+```
+
+```swift
+"1 >= 1"
+```
+
+```swift
+self.aProperty >= aProperty
+```
+
+```swift
+lhs.aProperty >= rhs.aProperty
+```
+
+```swift
+lhs.identifier >= rhs.identifier
+```
+
+```swift
+i >= index
+```
+
+```swift
+$0 >= 0
+```
+
+```swift
+keyValues?.count ?? 0 >= 0
+```
+
+```swift
+string >= string.lowercased()
+```
+
+```swift
+let num: Int? = 0
+_ = num != nil && num >= num?.byteSwapped
+```
+
+```swift
+1 < 2
+```
+
+```swift
+foo < bar
+```
+
+```swift
+prefixedFoo < foo
+```
+
+```swift
+foo.aProperty < foo.anotherProperty
+```
+
+```swift
+self.aProperty < self.anotherProperty
+```
+
+```swift
+"1 < 1"
+```
+
+```swift
+self.aProperty < aProperty
+```
+
+```swift
+lhs.aProperty < rhs.aProperty
+```
+
+```swift
+lhs.identifier < rhs.identifier
+```
+
+```swift
+i < index
+```
+
+```swift
+$0 < 0
+```
+
+```swift
+keyValues?.count ?? 0 < 0
+```
+
+```swift
+string < string.lowercased()
+```
+
+```swift
+let num: Int? = 0
+_ = num != nil && num < num?.byteSwapped
+```
+
+```swift
+1 <= 2
+```
+
+```swift
+foo <= bar
+```
+
+```swift
+prefixedFoo <= foo
+```
+
+```swift
+foo.aProperty <= foo.anotherProperty
+```
+
+```swift
+self.aProperty <= self.anotherProperty
+```
+
+```swift
+"1 <= 1"
+```
+
+```swift
+self.aProperty <= aProperty
+```
+
+```swift
+lhs.aProperty <= rhs.aProperty
+```
+
+```swift
+lhs.identifier <= rhs.identifier
+```
+
+```swift
+i <= index
+```
+
+```swift
+$0 <= 0
+```
+
+```swift
+keyValues?.count ?? 0 <= 0
+```
+
+```swift
+string <= string.lowercased()
+```
+
+```swift
+let num: Int? = 0
+_ = num != nil && num <= num?.byteSwapped
+```
+
+```swift
+func evaluate(_ mode: CommandMode) -> Result<AutoCorrectOptions, CommandantError<CommandantError<()>>>
+```
+
+```swift
+let array = Array<Array<Int>>()
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+↓1 == 1
+```
+
+```swift
+↓foo == foo
+```
+
+```swift
+↓foo.aProperty == foo.aProperty
+```
+
+```swift
+↓self.aProperty == self.aProperty
+```
+
+```swift
+↓$0 == $0
+```
+
+```swift
+↓1 != 1
+```
+
+```swift
+↓foo != foo
+```
+
+```swift
+↓foo.aProperty != foo.aProperty
+```
+
+```swift
+↓self.aProperty != self.aProperty
+```
+
+```swift
+↓$0 != $0
+```
+
+```swift
+↓1 === 1
+```
+
+```swift
+↓foo === foo
+```
+
+```swift
+↓foo.aProperty === foo.aProperty
+```
+
+```swift
+↓self.aProperty === self.aProperty
+```
+
+```swift
+↓$0 === $0
+```
+
+```swift
+↓1 !== 1
+```
+
+```swift
+↓foo !== foo
+```
+
+```swift
+↓foo.aProperty !== foo.aProperty
+```
+
+```swift
+↓self.aProperty !== self.aProperty
+```
+
+```swift
+↓$0 !== $0
+```
+
+```swift
+↓1 > 1
+```
+
+```swift
+↓foo > foo
+```
+
+```swift
+↓foo.aProperty > foo.aProperty
+```
+
+```swift
+↓self.aProperty > self.aProperty
+```
+
+```swift
+↓$0 > $0
+```
+
+```swift
+↓1 >= 1
+```
+
+```swift
+↓foo >= foo
+```
+
+```swift
+↓foo.aProperty >= foo.aProperty
+```
+
+```swift
+↓self.aProperty >= self.aProperty
+```
+
+```swift
+↓$0 >= $0
+```
+
+```swift
+↓1 < 1
+```
+
+```swift
+↓foo < foo
+```
+
+```swift
+↓foo.aProperty < foo.aProperty
+```
+
+```swift
+↓self.aProperty < self.aProperty
+```
+
+```swift
+↓$0 < $0
+```
+
+```swift
+↓1 <= 1
+```
+
+```swift
+↓foo <= foo
+```
+
+```swift
+↓foo.aProperty <= foo.aProperty
+```
+
+```swift
+↓self.aProperty <= self.aProperty
+```
+
+```swift
+↓$0 <= $0
+```
+
+</details>
+
+
+
 ## Identifier Name
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`identifier_name` | Enabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`identifier_name` | Enabled | No | style | No | 3.0.0 
 
 Identifier names should only contain alphanumeric characters and start with a lowercase character or should only contain capital letters. In an exception to the above, variable names may start with a capital letter when they are declared static and immutable. Variable names should not be too long or too short.
 
@@ -5792,6 +8867,14 @@ func == (lhs: SyntaxToken, rhs: SyntaxToken) -> Bool
 override func IsOperator(name: String) -> Bool
 ```
 
+```swift
+enum Foo { case `private` }
+```
+
+```swift
+enum Foo { case value(String) }
+```
+
 </details>
 <details>
 <summary>Triggering Examples</summary>
@@ -5846,11 +8929,11 @@ enum Foo { case ↓MyEnum }
 
 ## Implicit Getter
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`implicit_getter` | Enabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`implicit_getter` | Enabled | No | style | No | 3.0.0 
 
-Computed read-only properties should avoid using the get keyword.
+Computed read-only properties and subscripts should avoid using the get keyword.
 
 ### Examples
 
@@ -5859,121 +8942,129 @@ Computed read-only properties should avoid using the get keyword.
 
 ```swift
 class Foo {
-  var foo: Int {
- get {
- return 3
-}
- set {
- _abc = newValue 
-}
-}
-}
-
-```
-
-```swift
-class Foo {
-  var foo: Int {
- return 20 
-} 
-}
-}
-
-```
-
-```swift
-class Foo {
-  static var foo: Int {
- return 20 
-} 
-}
-}
-
-```
-
-```swift
-class Foo {
-  static foo: Int {
- get {
- return 3
-}
- set {
- _abc = newValue 
-}
-}
-}
-
-```
-
-```swift
-class Foo {
-  var foo: Int
-}
-
-```
-
-```swift
-class Foo {
-  var foo: Int {
- return getValueFromDisk() 
-} 
-}
-}
-
-```
-
-```swift
-class Foo {
-  var foo: String {
- return "get" 
-} 
-}
-}
-
-```
-
-```swift
-protocol Foo {
- var foo: Int { get }
-
-```
-
-```swift
-protocol Foo {
- var foo: Int { get set }
-
-```
-
-```swift
-class Foo {
-  var foo: Int {
-    struct Bar {
-      var bar: Int {
-        get { return 1 }
-        set { _ = newValue }
-      }
+    var foo: Int {
+        get { return 3 }
+        set { _abc = newValue }
     }
-    return Bar().bar
-  }
 }
+```
 
+```swift
+class Foo {
+    var foo: Int {
+        return 20
+    }
+}
+```
+
+```swift
+class Foo {
+    static var foo: Int {
+        return 20
+    }
+}
+```
+
+```swift
+class Foo {
+    static var foo: Int {
+        get { return 3 }
+        set { _abc = newValue }
+    }
+}
+```
+
+```swift
+class Foo {
+    var foo: Int
+}
+```
+
+```swift
+class Foo {
+    var foo: Int {
+        return getValueFromDisk()
+    }
+}
+```
+
+```swift
+class Foo {
+    var foo: String {
+        return "get"
+    }
+}
+```
+
+```swift
+protocol Foo {
+    var foo: Int { get }
+
+```
+
+```swift
+protocol Foo {
+    var foo: Int { get set }
+
+```
+
+```swift
+class Foo {
+    var foo: Int {
+        struct Bar {
+            var bar: Int {
+                get { return 1 }
+                set { _ = newValue }
+            }
+        }
+
+        return Bar().bar
+    }
+}
 ```
 
 ```swift
 var _objCTaggedPointerBits: UInt {
-   @inline(__always) get { return 0 }
+    @inline(__always) get { return 0 }
 }
-
 ```
 
 ```swift
 var next: Int? {
-   mutating get {
-       defer { self.count += 1 }
-       return self.count
-   }
+    mutating get {
+        defer { self.count += 1 }
+        return self.count
+    }
 }
+```
 
+```swift
+class Foo {
+    subscript(i: Int) -> Int {
+        return 20
+    }
+}
+```
+
+```swift
+class Foo {
+    subscript(i: Int) -> Int {
+        get { return 3 }
+        set { _abc = newValue }
+    }
+}
+```
+
+```swift
+protocol Foo {
+    subscript(i: Int) -> Int { get }
+}
+```
+
+```swift
+protocol Foo {
+    subscript(i: Int) -> Int { get set }
+}
 ```
 
 </details>
@@ -5982,60 +9073,57 @@ var next: Int? {
 
 ```swift
 class Foo {
-  var foo: Int {
- ↓get {
- return 20 
-} 
-} 
+    var foo: Int {
+        ↓get {
+            return 20
+        }
+    }
 }
-}
-
 ```
 
 ```swift
 class Foo {
-  var foo: Int {
- ↓get{
- return 20 
-} 
-} 
+    var foo: Int {
+        ↓get{ return 20 }
+    }
 }
-}
-
 ```
 
 ```swift
 class Foo {
-  static var foo: Int {
- ↓get {
- return 20 
-} 
-} 
+    static var foo: Int {
+        ↓get {
+            return 20
+        }
+    }
 }
-}
-
 ```
 
 ```swift
 var foo: Int {
- ↓get {
- return 20 
-} 
-} 
+    ↓get { return 20 }
 }
 ```
 
 ```swift
 class Foo {
-  @objc func bar() { }
-var foo: Int {
- ↓get {
- return 20 
-} 
-} 
+    @objc func bar() {}
+    var foo: Int {
+        ↓get {
+            return 20
+        }
+    }
 }
-}
+```
 
+```swift
+class Foo {
+    subscript(i: Int) -> Int {
+        ↓get {
+            return 20
+        }
+    }
+}
 ```
 
 </details>
@@ -6044,9 +9132,9 @@ var foo: Int {
 
 ## Implicit Return
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`implicit_return` | Disabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`implicit_return` | Disabled | Yes | style | No | 3.0.0 
 
 Prefer implicit returns in closures.
 
@@ -6099,15 +9187,25 @@ foo.map {
 }
 ```
 
+```swift
+foo.map({ ↓return $0 + 1})
+```
+
+```swift
+[1, 2].first(where: {
+    ↓return true
+})
+```
+
 </details>
 
 
 
 ## Implicitly Unwrapped Optional
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`implicitly_unwrapped_optional` | Disabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`implicitly_unwrapped_optional` | Disabled | No | idiomatic | No | 3.0.0 
 
 Implicitly unwrapped optionals should be avoided when possible.
 
@@ -6192,11 +9290,71 @@ func foo(int: Int!) {}
 
 
 
+## Inert Defer
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`inert_defer` | Enabled | No | lint | No | 3.0.0 
+
+If defer is at the end of its parent scope, it will be executed right where it is anyway.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+func example3() {
+    defer { /* deferred code */ }
+
+    print("other code")
+}
+```
+
+```swift
+func example4() {
+    if condition {
+        defer { /* deferred code */ }
+        print("other code")
+    }
+}
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+func example0() {
+    ↓defer { /* deferred code */ }
+}
+```
+
+```swift
+func example1() {
+    ↓defer { /* deferred code */ }
+    // comment
+}
+```
+
+```swift
+func example2() {
+    if condition {
+        ↓defer { /* deferred code */ }
+        // comment
+    }
+}
+```
+
+</details>
+
+
+
 ## Is Disjoint
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`is_disjoint` | Enabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`is_disjoint` | Enabled | No | idiomatic | No | 3.0.0 
 
 Prefer using `Set.isDisjoint(with:)` over `Set.intersection(_:).isEmpty`.
 
@@ -6239,9 +9397,9 @@ let isObjc = !objcAttributes.↓intersection(dictionary.enclosedSwiftAttributes)
 
 ## Joined Default Parameter
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`joined_default_parameter` | Disabled | Yes | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`joined_default_parameter` | Disabled | Yes | idiomatic | No | 3.0.0 
 
 Discouraged explicit usage of the default separator.
 
@@ -6272,7 +9430,13 @@ let foo = bar.joined(↓separator: "")
 
 ```swift
 let foo = bar.filter(toto)
-             .joined(↓separator: "")
+             .joined(↓separator: ""),
+```
+
+```swift
+func foo() -> String {
+  return ["1", "2"].joined(↓separator: "")
+}
 ```
 
 </details>
@@ -6281,9 +9445,9 @@ let foo = bar.filter(toto)
 
 ## Large Tuple
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`large_tuple` | Enabled | No | metrics
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`large_tuple` | Enabled | No | metrics | No | 3.0.0 
 
 Tuples shouldn't have too many members. Create a custom type instead.
 
@@ -6440,11 +9604,92 @@ func getDictionaryAndInt() -> (Dictionary<Int, ↓(String, String, String)>, Int
 
 
 
+## Last Where
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`last_where` | Disabled | No | performance | No | 4.2.0 
+
+Prefer using `.last(where:)` over `.filter { }.last` in collections.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+kinds.filter(excludingKinds.contains).isEmpty && kinds.last == .identifier
+
+```
+
+```swift
+myList.last(where: { $0 % 2 == 0 })
+
+```
+
+```swift
+match(pattern: pattern).filter { $0.last == .identifier }
+
+```
+
+```swift
+(myList.filter { $0 == 1 }.suffix(2)).last
+
+```
+
+```swift
+collection.filter("stringCol = '3'").last
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+↓myList.filter { $0 % 2 == 0 }.last
+
+```
+
+```swift
+↓myList.filter({ $0 % 2 == 0 }).last
+
+```
+
+```swift
+↓myList.map { $0 + 1 }.filter({ $0 % 2 == 0 }).last
+
+```
+
+```swift
+↓myList.map { $0 + 1 }.filter({ $0 % 2 == 0 }).last?.something()
+
+```
+
+```swift
+↓myList.filter(someFunction).last
+
+```
+
+```swift
+↓myList.filter({ $0 % 2 == 0 })
+.last
+
+```
+
+```swift
+(↓myList.filter { $0 == 1 }).last
+
+```
+
+</details>
+
+
+
 ## Leading Whitespace
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`leading_whitespace` | Enabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`leading_whitespace` | Enabled | Yes | style | No | 3.0.0 
 
 Files should not contain leading whitespace.
 
@@ -6478,9 +9723,9 @@ Files should not contain leading whitespace.
 
 ## Legacy CGGeometry Functions
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`legacy_cggeometry_functions` | Enabled | Yes | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`legacy_cggeometry_functions` | Enabled | Yes | idiomatic | No | 3.0.0 
 
 Struct extension properties and methods are preferred over legacy functions
 
@@ -6659,9 +9904,9 @@ rect1.intersects(rect2)
 
 ## Legacy Constant
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`legacy_constant` | Enabled | Yes | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`legacy_constant` | Enabled | Yes | idiomatic | No | 3.0.0 
 
 Struct-scoped constants are preferred over legacy global constants.
 
@@ -6760,9 +10005,9 @@ Float.pi
 
 ## Legacy Constructor
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`legacy_constructor` | Enabled | Yes | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`legacy_constructor` | Enabled | Yes | idiomatic | No | 3.0.0 
 
 Swift constructors are preferred over legacy convenience functions.
 
@@ -6851,6 +10096,14 @@ NSEdgeInsets(top: 0, left: 0, bottom: 10, right: 10)
 NSEdgeInsets(top: aTop, left: aLeft, bottom: aBottom, right: aRight)
 ```
 
+```swift
+UIOffset(horizontal: 0, vertical: 10)
+```
+
+```swift
+UIOffset(horizontal: horizontal, vertical: vertical)
+```
+
 </details>
 <details>
 <summary>Triggering Examples</summary>
@@ -6861,6 +10114,11 @@ NSEdgeInsets(top: aTop, left: aLeft, bottom: aBottom, right: aRight)
 
 ```swift
 ↓CGPointMake(xVal, yVal)
+```
+
+```swift
+↓CGPointMake(calculateX(), 10)
+
 ```
 
 ```swift
@@ -6935,15 +10193,116 @@ NSEdgeInsets(top: aTop, left: aLeft, bottom: aBottom, right: aRight)
 ↓NSEdgeInsetsMake(top, left, bottom, right)
 ```
 
+```swift
+↓CGVectorMake(10, 10)
+↓NSMakeRange(10, 1)
+```
+
+```swift
+↓UIOffsetMake(0, 10)
+```
+
+```swift
+↓UIOffsetMake(horizontal, vertical)
+```
+
+</details>
+
+
+
+## Legacy Hashing
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`legacy_hashing` | Enabled | No | idiomatic | No | 4.2.0 
+
+Prefer using the `hash(into:)` function instead of overriding `hashValue`
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+struct Foo: Hashable {
+  let bar: Int = 10
+
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(bar)
+  }
+}
+```
+
+```swift
+class Foo: Hashable {
+  let bar: Int = 10
+
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(bar)
+  }
+}
+```
+
+```swift
+var hashValue: Int { return 1 }
+class Foo: Hashable { 
+ }
+```
+
+```swift
+class Foo: Hashable {
+  let bar: String = "Foo"
+
+  public var hashValue: String {
+    return bar
+  }
+}
+```
+
+```swift
+class Foo: Hashable {
+  let bar: String = "Foo"
+
+  public var hashValue: String {
+    get { return bar }
+    set { bar = newValue }
+  }
+}
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+struct Foo: Hashable {
+    let bar: Int = 10
+
+    public ↓var hashValue: Int {
+        return bar
+    }
+}
+```
+
+```swift
+class Foo: Hashable {
+    let bar: Int = 10
+
+    public ↓var hashValue: Int {
+        return bar
+    }
+}
+```
+
 </details>
 
 
 
 ## Legacy NSGeometry Functions
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`legacy_nsgeometry_functions` | Enabled | Yes | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`legacy_nsgeometry_functions` | Enabled | Yes | idiomatic | No | 3.0.0 
 
 Struct extension properties and methods are preferred over legacy functions
 
@@ -7112,11 +10471,62 @@ rect1.intersects(rect2)
 
 
 
+## Legacy Random
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`legacy_random` | Disabled | No | idiomatic | No | 4.2.0 
+
+Prefer using `type.random(in:)` over legacy functions.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+Int.random(in: 0..<10)
+
+```
+
+```swift
+Double.random(in: 8.6...111.34)
+
+```
+
+```swift
+Float.random(in: 0 ..< 1)
+
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+↓arc4random(10)
+
+```
+
+```swift
+↓arc4random_uniform(83)
+
+```
+
+```swift
+↓drand48(52)
+
+```
+
+</details>
+
+
+
 ## Variable Declaration Whitespace
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`let_var_whitespace` | Disabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`let_var_whitespace` | Disabled | No | style | No | 3.0.0 
 
 Let and var should be separated from other statements by a blank line.
 
@@ -7279,9 +10689,9 @@ var x = 0
 
 ## Line Length
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`line_length` | Enabled | No | metrics
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`line_length` | Enabled | No | metrics | No | 3.0.0 
 
 Lines should not span too many characters.
 
@@ -7330,9 +10740,9 @@ Lines should not span too many characters.
 
 ## Literal Expression End Indentation
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`literal_expression_end_indentation` | Disabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`literal_expression_end_indentation` | Disabled | Yes | style | No | 3.0.0 
 
 Array and dictionary literal end should have the same indentation as the line that started it.
 
@@ -7417,11 +10827,88 @@ let x = [
 
 
 
+## Lower ACL than parent
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`lower_acl_than_parent` | Disabled | No | lint | No | 3.0.0 
+
+Ensure definitions have a lower access control level than their enclosing parent
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+public struct Foo { public func bar() {} }
+```
+
+```swift
+internal struct Foo { func bar() {} }
+```
+
+```swift
+struct Foo { func bar() {} }
+```
+
+```swift
+open class Foo { public func bar() {} }
+```
+
+```swift
+open class Foo { open func bar() {} }
+```
+
+```swift
+fileprivate struct Foo { private func bar() {} }
+```
+
+```swift
+private struct Foo { private func bar(id: String) }
+```
+
+```swift
+extension Foo { public func bar() {} }
+```
+
+```swift
+private struct Foo { fileprivate func bar() {} }
+```
+
+```swift
+private func foo(id: String) {}
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+struct Foo { public func bar() {} }
+```
+
+```swift
+enum Foo { public func bar() {} }
+```
+
+```swift
+public class Foo { open func bar() }
+```
+
+```swift
+class Foo { public private(set) var bar: String? }
+```
+
+</details>
+
+
+
 ## Mark
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`mark` | Enabled | Yes | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`mark` | Enabled | Yes | lint | No | 3.0.0 
 
 MARK comment should be in valid format. e.g. '// MARK: ...' or '// MARK: - ...'
 
@@ -7530,6 +11017,22 @@ MARK comment should be in valid format. e.g. '// MARK: ...' or '// MARK: - ...'
 ```
 
 ```swift
+↓//MARK : bad
+```
+
+```swift
+↓// MARKL:
+```
+
+```swift
+↓// MARKR 
+```
+
+```swift
+↓// MARKK -
+```
+
+```swift
 ↓//MARK:- Top-Level bad mark
 ↓//MARK:- Another bad mark
 struct MarkTest {}
@@ -7542,11 +11045,363 @@ extension MarkTest {}
 
 
 
+## Missing Docs
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`missing_docs` | Disabled | No | lint | No | 4.1.0 
+
+Declarations should be documented.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+/// docs
+public class A {
+/// docs
+public func b() {}
+}
+/// docs
+public class B: A { override public func b() {} }
+
+```
+
+```swift
+import Foundation
+/// docs
+public class B: NSObject {
+// no docs
+override public var description: String { fatalError() } }
+
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+public func a() {}
+
+```
+
+```swift
+// regular comment
+public func a() {}
+
+```
+
+```swift
+/* regular comment */
+public func a() {}
+
+```
+
+```swift
+/// docs
+public protocol A {
+// no docs
+var b: Int { get } }
+/// docs
+public struct C: A {
+
+public let b: Int
+}
+```
+
+</details>
+
+
+
+## Modifier Order
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`modifier_order` | Disabled | Yes | style | No | 4.1.0 
+
+Modifier order should be consistent.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+public class Foo { 
+   public convenience required init() {} 
+}
+```
+
+```swift
+public class Foo { 
+   public static let bar = 42 
+}
+```
+
+```swift
+public class Foo { 
+   public static var bar: Int { 
+       return 42   }}
+```
+
+```swift
+public class Foo { 
+   public class var bar: Int { 
+       return 42 
+   } 
+}
+```
+
+```swift
+public class Bar { 
+   public class var foo: String { 
+       return "foo" 
+   } 
+} 
+public class Foo: Bar { 
+   override public final class var foo: String { 
+       return "bar" 
+   } 
+}
+```
+
+```swift
+open class Bar { 
+   public var foo: Int? { 
+       return 42 
+   } 
+} 
+open class Foo: Bar { 
+   override public var foo: Int? { 
+       return 43 
+   } 
+}
+```
+
+```swift
+open class Bar { 
+   open class func foo() -> Int { 
+       return 42 
+   } 
+} 
+class Foo: Bar { 
+   override open class func foo() -> Int { 
+       return 43 
+   } 
+}
+```
+
+```swift
+protocol Foo: class {} 
+class Bar { 
+    public private(set) weak var foo: Foo? 
+} 
+
+```
+
+```swift
+@objc 
+public final class Foo: NSObject {} 
+
+```
+
+```swift
+@objcMembers 
+public final class Foo: NSObject {} 
+
+```
+
+```swift
+@objc 
+override public private(set) weak var foo: Bar? 
+
+```
+
+```swift
+@objc 
+public final class Foo: NSObject {} 
+
+```
+
+```swift
+@objc 
+open final class Foo: NSObject { 
+   open weak var weakBar: NSString? = nil 
+}
+```
+
+```swift
+public final class Foo {}
+```
+
+```swift
+class Bar { 
+   func bar() {} 
+}
+```
+
+```swift
+internal class Foo: Bar { 
+   override internal func bar() {} 
+}
+```
+
+```swift
+public struct Foo { 
+   internal weak var weakBar: NSObject? = nil 
+}
+```
+
+```swift
+class Foo { 
+   internal lazy var bar: String = "foo" 
+}
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+class Foo { 
+   convenience required public init() {} 
+}
+```
+
+```swift
+public class Foo { 
+   static public let bar = 42 
+}
+```
+
+```swift
+public class Foo { 
+   static public var bar: Int { 
+       return 42 
+   } 
+} 
+
+```
+
+```swift
+public class Foo { 
+   class public var bar: Int { 
+       return 42 
+   } 
+}
+```
+
+```swift
+public class RootFoo { 
+   class public var foo: String { 
+       return "foo" 
+   } 
+} 
+public class Foo: RootFoo { 
+   override final class public var foo: String { 
+       return "bar" 
+   } 
+}
+```
+
+```swift
+open class Bar { 
+   public var foo: Int? { 
+       return 42 
+   } 
+} 
+open class Foo: Bar { 
+    public override var foo: Int? { 
+       return 43 
+   } 
+}
+```
+
+```swift
+protocol Foo: class {} 
+class Bar { 
+    private(set) public weak var foo: Foo? 
+} 
+
+```
+
+```swift
+open class Bar { 
+   open class func foo() -> Int { 
+       return 42 
+   } 
+} 
+class Foo: Bar { 
+   class open override func foo() -> Int { 
+       return 43 
+   } 
+}
+```
+
+```swift
+open class Bar { 
+   open class func foo() -> Int { 
+       return 42 
+   } 
+} 
+class Foo: Bar { 
+   open override class func foo() -> Int { 
+       return 43 
+   } 
+}
+```
+
+```swift
+@objc 
+final public class Foo: NSObject {}
+```
+
+```swift
+@objcMembers 
+final public class Foo: NSObject {}
+```
+
+```swift
+@objc 
+final open class Foo: NSObject { 
+   weak open var weakBar: NSString? = nil 
+}
+```
+
+```swift
+final public class Foo {} 
+
+```
+
+```swift
+internal class Foo: Bar { 
+   internal override func bar() {} 
+}
+```
+
+```swift
+public struct Foo { 
+   weak internal var weakBar: NSObjetc? = nil 
+}
+```
+
+```swift
+class Foo { 
+   lazy internal var bar: String = "foo" 
+}
+```
+
+</details>
+
+
+
 ## Multiline Arguments
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`multiline_arguments` | Disabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`multiline_arguments` | Disabled | No | style | No | 3.0.0 
 
 Arguments should be either on the same line, or one per line.
 
@@ -7667,11 +11522,328 @@ foo(
 
 
 
+## Multiline Arguments Brackets
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`multiline_arguments_brackets` | Disabled | No | style | No | 3.0.0 
+
+Multiline arguments should have their surrounding brackets in a new line.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+foo(param1: "Param1", param2: "Param2", param3: "Param3")
+```
+
+```swift
+foo(
+    param1: "Param1", param2: "Param2", param3: "Param3"
+)
+```
+
+```swift
+func foo(
+    param1: "Param1",
+    param2: "Param2",
+    param3: "Param3"
+)
+```
+
+```swift
+foo { param1, param2 in
+    print("hello world")
+}
+```
+
+```swift
+foo(
+    bar(
+        x: 5,
+        y: 7
+    )
+)
+```
+
+```swift
+AlertViewModel.AlertAction(title: "some title", style: .default) {
+    AlertManager.shared.presentNextDebugAlert()
+}
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+foo(↓param1: "Param1", param2: "Param2",
+         param3: "Param3"
+)
+```
+
+```swift
+foo(
+    param1: "Param1",
+    param2: "Param2",
+    param3: "Param3"↓)
+```
+
+```swift
+foo(↓bar(
+    x: 5,
+    y: 7
+)
+)
+```
+
+```swift
+foo(
+    bar(
+        x: 5,
+        y: 7
+)↓)
+```
+
+</details>
+
+
+
+## Multiline Function Chains
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`multiline_function_chains` | Disabled | No | style | No | 3.0.0 
+
+Chained function calls should be either on the same line, or one per line.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+let evenSquaresSum = [20, 17, 35, 4].filter { $0 % 2 == 0 }.map { $0 * $0 }.reduce(0, +)
+```
+
+```swift
+let evenSquaresSum = [20, 17, 35, 4]
+    .filter { $0 % 2 == 0 }.map { $0 * $0 }.reduce(0, +)",
+```
+
+```swift
+let chain = a
+    .b(1, 2, 3)
+    .c { blah in
+        print(blah)
+    }
+    .d()
+```
+
+```swift
+let chain = a.b(1, 2, 3)
+    .c { blah in
+        print(blah)
+    }
+    .d()
+```
+
+```swift
+let chain = a.b(1, 2, 3)
+    .c { blah in print(blah) }
+    .d()
+```
+
+```swift
+let chain = a.b(1, 2, 3)
+    .c(.init(
+        a: 1,
+        b, 2,
+        c, 3))
+    .d()
+```
+
+```swift
+self.viewModel.outputs.postContextualNotification
+  .observeForUI()
+  .observeValues {
+    NotificationCenter.default.post(
+      Notification(
+        name: .ksr_showNotificationsDialog,
+        userInfo: [UserInfoKeys.context: PushNotificationDialog.Context.pledge,
+                   UserInfoKeys.viewController: self]
+     )
+    )
+  }
+```
+
+```swift
+let remainingIDs = Array(Set(self.currentIDs).subtracting(Set(response.ids)))
+```
+
+```swift
+self.happeningNewsletterOn = self.updateCurrentUser
+    .map { $0.newsletters.happening }.skipNil().skipRepeats()
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+let evenSquaresSum = [20, 17, 35, 4]
+    .filter { $0 % 2 == 0 }↓.map { $0 * $0 }
+    .reduce(0, +)
+```
+
+```swift
+let evenSquaresSum = a.b(1, 2, 3)
+    .c { blah in
+        print(blah)
+    }↓.d()
+```
+
+```swift
+let evenSquaresSum = a.b(1, 2, 3)
+    .c(2, 3, 4)↓.d()
+```
+
+```swift
+let evenSquaresSum = a.b(1, 2, 3)↓.c { blah in
+        print(blah)
+    }
+    .d()
+```
+
+```swift
+a.b {
+//  ““
+}↓.e()
+```
+
+</details>
+
+
+
+## Multiline Literal Brackets
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`multiline_literal_brackets` | Disabled | No | style | No | 3.0.0 
+
+Multiline literals should have their surrounding brackets in a new line.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+let trio = ["harry", "ronald", "hermione"]
+let houseCup = ["gryffinder": 460, "hufflepuff": 370, "ravenclaw": 410, "slytherin": 450]
+```
+
+```swift
+let trio = [
+    "harry",
+    "ronald",
+    "hermione"
+]
+let houseCup = [
+    "gryffinder": 460,
+    "hufflepuff": 370,
+    "ravenclaw": 410,
+    "slytherin": 450
+]
+```
+
+```swift
+let trio = [
+    "harry", "ronald", "hermione"
+]
+let houseCup = [
+    "gryffinder": 460, "hufflepuff": 370,
+    "ravenclaw": 410, "slytherin": 450
+]
+```
+
+```swift
+    _ = [
+        1,
+        2,
+        3,
+        4,
+        5, 6,
+        7, 8, 9
+    ]
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+let trio = [↓"harry",
+            "ronald",
+            "hermione"
+]
+```
+
+```swift
+let houseCup = [↓"gryffinder": 460, "hufflepuff": 370,
+                "ravenclaw": 410, "slytherin": 450
+]
+```
+
+```swift
+let trio = [
+    "harry",
+    "ronald",
+    "hermione"↓]
+```
+
+```swift
+let houseCup = [
+    "gryffinder": 460, "hufflepuff": 370,
+    "ravenclaw": 410, "slytherin": 450↓]
+```
+
+```swift
+class Hogwarts {
+    let houseCup = [
+        "gryffinder": 460, "hufflepuff": 370,
+        "ravenclaw": 410, "slytherin": 450↓]
+}
+```
+
+```swift
+    _ = [
+        1,
+        2,
+        3,
+        4,
+        5, 6,
+        7, 8, 9↓]
+```
+
+```swift
+    _ = [↓1, 2, 3,
+         4, 5, 6,
+         7, 8, 9
+    ]
+```
+
+</details>
+
+
+
 ## Multiline Parameters
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`multiline_parameters` | Disabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`multiline_parameters` | Disabled | No | style | No | 3.0.0 
 
 Functions and methods parameters should be either on the same line, or one per line.
 
@@ -8147,11 +12319,114 @@ class Foo {
 
 
 
+## Multiline Parameters Brackets
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`multiline_parameters_brackets` | Disabled | No | style | No | 3.0.0 
+
+Multiline parameters should have their surrounding brackets in a new line.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+func foo(param1: String, param2: String, param3: String)
+```
+
+```swift
+func foo(
+    param1: String, param2: String, param3: String
+)
+```
+
+```swift
+func foo(
+    param1: String,
+    param2: String,
+    param3: String
+)
+```
+
+```swift
+class SomeType {
+    func foo(param1: String, param2: String, param3: String)
+}
+```
+
+```swift
+class SomeType {
+    func foo(
+        param1: String, param2: String, param3: String
+    )
+}
+```
+
+```swift
+class SomeType {
+    func foo(
+        param1: String,
+        param2: String,
+        param3: String
+    )
+}
+```
+
+```swift
+func foo<T>(param1: T, param2: String, param3: String) -> T { /* some code */ }
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+func foo(↓param1: String, param2: String,
+         param3: String
+)
+```
+
+```swift
+func foo(
+    param1: String,
+    param2: String,
+    param3: String↓)
+```
+
+```swift
+class SomeType {
+    func foo(↓param1: String, param2: String,
+             param3: String
+    )
+}
+```
+
+```swift
+class SomeType {
+    func foo(
+        param1: String,
+        param2: String,
+        param3: String↓)
+}
+```
+
+```swift
+func foo<T>(↓param1: T, param2: String,
+         param3: String
+) -> T
+```
+
+</details>
+
+
+
 ## Multiple Closures with Trailing Closure
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`multiple_closures_with_trailing_closure` | Enabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`multiple_closures_with_trailing_closure` | Enabled | No | style | No | 3.0.0 
 
 Trailing closure syntax should not be used when passing more than one closure argument.
 
@@ -8210,9 +12485,9 @@ UIView.animate(withDuration: 1.0, animations: {
 
 ## Nesting
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`nesting` | Enabled | No | metrics
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`nesting` | Enabled | No | metrics | No | 3.0.0 
 
 Types should be nested at most 1 level deep, and statements should be nested at most 5 levels deep.
 
@@ -8327,9 +12602,9 @@ func func4() { func func5() {
 
 ## Nimble Operator
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`nimble_operator` | Disabled | Yes | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`nimble_operator` | Disabled | Yes | idiomatic | No | 3.0.0 
 
 Prefer Nimble operator overloads over free matcher functions.
 
@@ -8386,6 +12661,13 @@ expect(actual).to(haveCount(expected))
 
 ```
 
+```swift
+foo.method {
+    expect(value).to(equal(expectedValue), description: "Failed")
+    return Bar(value: ())
+}
+```
+
 </details>
 <details>
 <summary>Triggering Examples</summary>
@@ -8402,6 +12684,11 @@ expect(actual).to(haveCount(expected))
 
 ```swift
 ↓expect(10).to(equal(10))
+
+```
+
+```swift
+↓expect(10, line: 1).to(equal(10))
 
 ```
 
@@ -8442,9 +12729,9 @@ expect(10) > 2
 
 ## No Extension Access Modifier
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`no_extension_access_modifier` | Disabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`no_extension_access_modifier` | Disabled | No | idiomatic | No | 3.0.0 
 
 Prefer not to use extension access modifiers
 
@@ -8492,11 +12779,189 @@ extension String {}
 
 
 
+## No Fallthrough Only
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`no_fallthrough_only` | Enabled | No | idiomatic | No | 3.0.0 
+
+Fallthroughs can only be used if the `case` contains at least one other statement.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+switch myvar {
+case 1:
+  var a = 1
+  fallthrough
+case 2:
+  var a = 2
+}
+```
+
+```swift
+switch myvar {
+case "a":
+  var one = 1
+  var two = 2
+  fallthrough
+case "b": /* comment */
+  var three = 3
+}
+```
+
+```swift
+switch myvar {
+case 1:
+  let one = 1
+case 2:
+  // comment
+  var two = 2
+}
+```
+
+```swift
+switch myvar {
+case MyFunc(x: [1, 2, YourFunc(a: 23)], y: 2):
+  var three = 3
+  fallthrough
+default:
+  var three = 4
+}
+```
+
+```swift
+switch myvar {
+case .alpha:
+  var one = 1
+case .beta:
+  var three = 3
+  fallthrough
+default:
+    var four = 4
+}
+```
+
+```swift
+let aPoint = (1, -1)
+switch aPoint {
+case let (x, y) where x == y:
+  let A = "A"
+case let (x, y) where x == -y:
+  let B = "B"
+  fallthrough
+default:
+  let C = "C"
+}
+```
+
+```swift
+switch myvar {
+case MyFun(with: { $1 }):
+  let one = 1
+  fallthrough
+case "abc":
+  let two = 2
+}
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+switch myvar {
+case 1:
+  ↓fallthrough
+case 2:
+  var a = 1
+}
+```
+
+```swift
+switch myvar {
+case 1:
+  var a = 2
+case 2:
+  ↓fallthrough
+case 3:
+  var a = 3
+}
+```
+
+```swift
+switch myvar {
+case 1: // comment
+  ↓fallthrough
+}
+```
+
+```swift
+switch myvar {
+case 1: /* multi
+  line
+  comment */
+  ↓fallthrough
+case 2:
+  var a = 2
+}
+```
+
+```swift
+switch myvar {
+case MyFunc(x: [1, 2, YourFunc(a: 23)], y: 2):
+  ↓fallthrough
+default:
+  var three = 4
+}
+```
+
+```swift
+switch myvar {
+case .alpha:
+  var one = 1
+case .beta:
+  ↓fallthrough
+case .gamma:
+  var three = 3
+default:
+  var four = 4
+}
+```
+
+```swift
+let aPoint = (1, -1)
+switch aPoint {
+case let (x, y) where x == y:
+  let A = "A"
+case let (x, y) where x == -y:
+  ↓fallthrough
+default:
+  let B = "B"
+}
+```
+
+```swift
+switch myvar {
+case MyFun(with: { $1 }):
+  ↓fallthrough
+case "abc":
+  let two = 2
+}
+```
+
+</details>
+
+
+
 ## No Grouping Extension
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`no_grouping_extension` | Disabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`no_grouping_extension` | Disabled | No | idiomatic | No | 3.0.0 
 
 Extensions shouldn't be used to group code within the same source file.
 
@@ -8551,9 +13016,9 @@ extension External { struct Gotcha {}}
 
 ## Notification Center Detachment
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`notification_center_detachment` | Enabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`notification_center_detachment` | Enabled | No | lint | No | 3.0.0 
 
 An object should only remove itself as an observer in `deinit`.
 
@@ -8599,9 +13064,9 @@ class Foo {
 
 ## Number Separator
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`number_separator` | Disabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`number_separator` | Disabled | Yes | style | No | 3.0.0 
 
 Underscores should be used as thousand separator in large decimal numbers.
 
@@ -8860,9 +13325,9 @@ let foo = ↓1000000.000000_1
 
 ## Object Literal
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`object_literal` | Disabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`object_literal` | Disabled | No | idiomatic | No | 3.0.0 
 
 Prefer object literals over image and color inits.
 
@@ -8977,9 +13442,9 @@ let color = ↓NSColor.init(white: 0.5, alpha: 1)
 
 ## Opening Brace Spacing
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`opening_brace` | Enabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`opening_brace` | Enabled | Yes | style | No | 3.0.0 
 
 Opening braces should be preceded by a single space and on the same line as the declaration.
 
@@ -9142,9 +13607,9 @@ struct Parent {
 
 ## Operator Usage Whitespace
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`operator_usage_whitespace` | Disabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`operator_usage_whitespace` | Disabled | Yes | style | No | 3.0.0 
 
 Operators should be surrounded by a single whitespace when they are being used.
 
@@ -9175,6 +13640,11 @@ let foo: Int?
 
 ```swift
 let foo: Array<String>
+
+```
+
+```swift
+let model = CustomView<Container<Button>, NSAttributedString>()
 
 ```
 
@@ -9228,6 +13698,21 @@ button.setImage(#imageLiteral(resourceName: "image-1"), for: .normal)
 
 ```swift
 let doubleValue = -9e-11
+
+```
+
+```swift
+let foo = GenericType<(UIViewController) -> Void>()
+
+```
+
+```swift
+let foo = Foo<Bar<T>, Baz>()
+
+```
+
+```swift
+let foo = SignalProducer<Signal<Value, Error>, Error>([ self.signal, next ]).flatten(.concat)
 
 ```
 
@@ -9317,9 +13802,9 @@ let v8 = 1↓ <<  (6)
 
 ## Operator Function Whitespace
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`operator_whitespace` | Enabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`operator_whitespace` | Enabled | No | style | No | 3.0.0 
 
 Operators should be surrounded by a single whitespace when defining them.
 
@@ -9383,9 +13868,9 @@ func abc(lhs: Int, rhs: Int) -> Int {}
 
 ## Overridden methods call super
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`overridden_super_call` | Disabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`overridden_super_call` | Disabled | No | lint | No | 3.0.0 
 
 Some overridden methods should always call super
 
@@ -9480,9 +13965,9 @@ class VC: UIViewController {
 
 ## Override in Extension
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`override_in_extension` | Disabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`override_in_extension` | Disabled | No | lint | No | 3.0.0 
 
 Extensions shouldn't override declarations.
 
@@ -9554,9 +14039,9 @@ extension Person {
 
 ## Pattern Matching Keywords
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`pattern_matching_keywords` | Disabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`pattern_matching_keywords` | Disabled | No | idiomatic | No | 3.0.0 
 
 Combine multiple pattern matching bindings by moving keywords out of tuples.
 
@@ -9677,9 +14162,9 @@ switch foo {
 
 ## Prefixed Top-Level Constant
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`prefixed_toplevel_constant` | Disabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`prefixed_toplevel_constant` | Disabled | No | style | No | 3.0.0 
 
 Top-level constants should be prefixed by `k`.
 
@@ -9796,9 +14281,9 @@ let ↓foo = {
 
 ## Private Actions
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`private_action` | Disabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`private_action` | Disabled | No | lint | No | 3.0.0 
 
 IBActions should be private.
 
@@ -9936,9 +14421,9 @@ internal extension Foo {
 
 ## Private Outlets
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`private_outlet` | Disabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`private_outlet` | Disabled | No | lint | No | 3.0.0 
 
 IBOutlets should be private to avoid leaking UIKit to higher layers.
 
@@ -10006,9 +14491,9 @@ class Foo {
 
 ## Private over fileprivate
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`private_over_fileprivate` | Enabled | Yes | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`private_over_fileprivate` | Enabled | Yes | idiomatic | No | 3.0.0 
 
 Prefer `private` over `fileprivate` declarations.
 
@@ -10041,27 +14526,27 @@ internal extension String {}
 
 ```swift
 extension String {
-fileprivate func Something(){}
+  fileprivate func Something(){}
 }
 ```
 
 ```swift
 class MyClass {
-fileprivate let myInt = 4
+  fileprivate let myInt = 4
 }
 ```
 
 ```swift
 class MyClass {
-fileprivate(set) var myInt = 4
+  fileprivate(set) var myInt = 4
 }
 ```
 
 ```swift
 struct Outter {
-struct Inter {
-fileprivate struct Inner {}
-}
+  struct Inter {
+    fileprivate struct Inner {}
+  }
 }
 ```
 
@@ -10075,7 +14560,7 @@ fileprivate struct Inner {}
 
 ```swift
 ↓fileprivate class MyClass {
-fileprivate(set) var myInt = 4
+  fileprivate(set) var myInt = 4
 }
 ```
 
@@ -10085,9 +14570,9 @@ fileprivate(set) var myInt = 4
 
 ## Private Unit Test
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`private_unit_test` | Enabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`private_unit_test` | Enabled | No | lint | No | 3.0.0 
 
 Unit tests marked private are silently skipped.
 
@@ -10112,6 +14597,13 @@ internal class FooTest: XCTestCase { func test1() {}
 
 ```swift
 public class FooTest: XCTestCase { func test1() {}
+ internal func test2() {}
+ public func test3() {}
+ }
+```
+
+```swift
+@objc private class FooTest: XCTestCase { @objc private func test1() {}
  internal func test2() {}
  public func test3() {}
  }
@@ -10176,11 +14668,56 @@ public class FooTest: XCTestCase { func test1() {}
 
 
 
+## Prohibited Interface Builder
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`prohibited_interface_builder` | Disabled | No | lint | No | 3.0.0 
+
+Creating views using Interface Builder should be avoided.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+class ViewController: UIViewController {
+    var label: UILabel!
+}
+```
+
+```swift
+class ViewController: UIViewController {
+    @objc func buttonTapped(_ sender: UIButton) {}
+}
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+class ViewController: UIViewController {
+    @IBOutlet ↓var label: UILabel!
+}
+```
+
+```swift
+class ViewController: UIViewController {
+    @IBAction ↓func buttonTapped(_ sender: UIButton) {}
+}
+```
+
+</details>
+
+
+
 ## Prohibited calls to super
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`prohibited_super_call` | Disabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`prohibited_super_call` | Disabled | No | lint | No | 3.0.0 
 
 Some methods should not call super
 
@@ -10191,18 +14728,28 @@ Some methods should not call super
 
 ```swift
 class VC: UIViewController {
-	override func loadView() {
-	}
+    override func loadView() {
+    }
 }
-
 ```
 
 ```swift
 class NSView {
-	func updateLayer() {
-		self.method1()	}
+    func updateLayer() {
+        self.method1()
+    }
 }
+```
 
+```swift
+public class FileProviderExtension: NSFileProviderExtension {
+    override func providePlaceholder(at url: URL, completionHandler: @escaping (Error?) -> Void) {
+        guard let identifier = persistentIdentifierForItem(at: url) else {
+            completionHandler(NSFileProviderError(.noSuchItem))
+            return
+        }
+    }
+}
 ```
 
 </details>
@@ -10211,43 +14758,39 @@ class NSView {
 
 ```swift
 class VC: UIViewController {
-	override func loadView() {↓
-		super.loadView()
-	}
+    override func loadView() {↓
+        super.loadView()
+    }
 }
-
 ```
 
 ```swift
 class VC: NSFileProviderExtension {
-	override func providePlaceholder(at url: URL,completionHandler: @escaping (Error?) -> Void) {↓
-		self.method1()
-		super.providePlaceholder(at:url, completionHandler: completionHandler)
-	}
+    override func providePlaceholder(at url: URL, completionHandler: @escaping (Error?) -> Void) {↓
+        self.method1()
+        super.providePlaceholder(at:url, completionHandler: completionHandler)
+    }
 }
-
 ```
 
 ```swift
 class VC: NSView {
-	override func updateLayer() {↓
-		self.method1()
-		super.updateLayer()
-		self.method2()
-	}
+    override func updateLayer() {↓
+        self.method1()
+        super.updateLayer()
+        self.method2()
+    }
 }
-
 ```
 
 ```swift
 class VC: NSView {
-	override func updateLayer() {↓
-		defer {
-			super.updateLayer()
-		}
-	}
+    override func updateLayer() {↓
+        defer {
+            super.updateLayer()
+        }
+    }
 }
-
 ```
 
 </details>
@@ -10256,9 +14799,9 @@ class VC: NSView {
 
 ## Protocol Property Accessors Order
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`protocol_property_accessors_order` | Enabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`protocol_property_accessors_order` | Enabled | Yes | style | No | 3.0.0 
 
 When declaring properties in protocols, the order of accessors should be `get set`.
 
@@ -10301,9 +14844,9 @@ protocol Foo {
 
 ## Quick Discouraged Call
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`quick_discouraged_call` | Disabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`quick_discouraged_call` | Disabled | No | lint | No | 3.0.0 
 
 Discouraged call inside 'describe' and/or 'context' block.
 
@@ -10644,9 +15187,9 @@ class TotoTests: QuickSpec {
 
 ## Quick Discouraged Focused Test
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`quick_discouraged_focused_test` | Disabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`quick_discouraged_focused_test` | Disabled | No | lint | No | 3.0.0 
 
 Discouraged focused test. Other tests won't run while this one is focused.
 
@@ -10752,9 +15295,9 @@ class TotoTests: QuickSpec {
 
 ## Quick Discouraged Pending Test
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`quick_discouraged_pending_test` | Disabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`quick_discouraged_pending_test` | Disabled | No | lint | No | 3.0.0 
 
 Discouraged pending test. This test won't run while it's marked as pending.
 
@@ -10869,9 +15412,9 @@ class TotoTests: QuickSpec {
 
 ## Redundant Discardable Let
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`redundant_discardable_let` | Enabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`redundant_discardable_let` | Enabled | Yes | style | No | 3.0.0 
 
 Prefer `_ = foo()` over `let _ = foo()` when discarding a result from a function.
 
@@ -10924,9 +15467,9 @@ if _ = foo() { ↓let _ = bar() }
 
 ## Redundant Nil Coalescing
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`redundant_nil_coalescing` | Disabled | Yes | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`redundant_nil_coalescing` | Disabled | Yes | idiomatic | No | 3.0.0 
 
 nil coalescing operator is only evaluated if the lhs is nil, coalescing operator with nil as rhs is redundant
 
@@ -10958,11 +15501,230 @@ var myVar: Int? = nil; myVar↓??nil
 
 
 
+## Redundant @objc Attribute
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`redundant_objc_attribute` | Enabled | No | idiomatic | No | 4.1.0 
+
+Objective-C attribute (@objc) is redundant in declaration.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+@objc private var foo: String? {}
+```
+
+```swift
+@IBInspectable private var foo: String? {}
+```
+
+```swift
+@objc private func foo(_ sender: Any) {}
+```
+
+```swift
+@IBAction private func foo(_ sender: Any) {}
+```
+
+```swift
+@GKInspectable private var foo: String! {}
+```
+
+```swift
+private @GKInspectable var foo: String! {}
+```
+
+```swift
+@NSManaged var foo: String!
+```
+
+```swift
+@objc @NSCopying var foo: String!
+```
+
+```swift
+@objcMembers
+class Foo {
+  var bar: Any?
+  @objc
+  class Bar {
+    @objc
+    var foo: Any?
+  }
+}
+```
+
+```swift
+@objc
+extension Foo {
+  var bar: Int {
+    return 0
+  }
+}
+```
+
+```swift
+extension Foo {
+  @objc
+  var bar: Int { return 0 }
+}
+```
+
+```swift
+@objc @IBDesignable
+extension Foo {
+  var bar: Int { return 0 }
+}
+```
+
+```swift
+@IBDesignable
+extension Foo {
+  @objc
+  var bar: Int { return 0 }
+  var fooBar: Int { return 1 }
+}
+```
+
+```swift
+@objcMembers
+class Foo: NSObject {
+  @objc
+  private var bar: Int {
+    return 0
+  }
+}
+```
+
+```swift
+@objcMembers
+class Foo {
+    class Bar: NSObject {
+        @objc var foo: Any
+    }
+}
+```
+
+```swift
+@objcMembers
+class Foo {
+    @objc class Bar {}
+}
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+@objc @IBInspectable private ↓var foo: String? {}
+```
+
+```swift
+@IBInspectable @objc private ↓var foo: String? {}
+```
+
+```swift
+@objc @IBAction private ↓func foo(_ sender: Any) {}
+```
+
+```swift
+@IBAction @objc private ↓func foo(_ sender: Any) {}
+```
+
+```swift
+@objc @GKInspectable private ↓var foo: String! {}
+```
+
+```swift
+@GKInspectable @objc private ↓var foo: String! {}
+```
+
+```swift
+@objc @NSManaged private ↓var foo: String!
+```
+
+```swift
+@NSManaged @objc private ↓var foo: String!
+```
+
+```swift
+@objc @IBDesignable ↓class Foo {}
+```
+
+```swift
+@objcMembers
+class Foo {
+  @objc ↓var bar: Any?
+}
+```
+
+```swift
+@objcMembers
+class Foo {
+  @objc ↓var bar: Any?
+  @objc ↓var foo: Any?
+  @objc
+  class Bar {
+    @objc
+    var foo: Any?
+  }
+}
+```
+
+```swift
+@objc
+extension Foo {
+  @objc
+  ↓var bar: Int {
+    return 0
+  }
+}
+```
+
+```swift
+@objc @IBDesignable
+extension Foo {
+  @objc
+  ↓var bar: Int {
+    return 0
+  }
+}
+```
+
+```swift
+@objcMembers
+class Foo {
+    @objcMembers
+    class Bar: NSObject {
+        @objc ↓var foo: Any
+    }
+}
+```
+
+```swift
+@objc
+extension Foo {
+    @objc
+    private ↓var bar: Int {
+        return 0
+    }
+}
+```
+
+</details>
+
+
+
 ## Redundant Optional Initialization
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`redundant_optional_initialization` | Enabled | Yes | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`redundant_optional_initialization` | Enabled | Yes | idiomatic | No | 3.0.0 
 
 Initializing an optional variable with nil is redundant.
 
@@ -11008,22 +15770,32 @@ var myVar: Optional<Int> = 0
 
 ```swift
 var foo: Int? {
-   if bar != nil { }
-   return 0
+  if bar != nil { }
+  return 0
 }
-
 ```
 
 ```swift
 var foo: Int? = {
-   if bar != nil { }
-   return 0
+  if bar != nil { }
+  return 0
 }()
-
 ```
 
 ```swift
 lazy var test: Int? = nil
+```
+
+```swift
+func funcName() {
+  var myVar: String?
+}
+```
+
+```swift
+func funcName() {
+  let myVar: String? = nil
+}
 ```
 
 </details>
@@ -11050,15 +15822,98 @@ var myVar: Optional<Int>↓=nil
 
 ```
 
+```swift
+func funcName() {
+    var myVar: String?↓ = nil
+}
+```
+
+</details>
+
+
+
+## Redundant Set Access Control Rule
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`redundant_set_access_control` | Enabled | No | idiomatic | No | 4.1.0 
+
+Property setter access level shouldn't be explicit if it's the same as the variable access level.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+private(set) public var foo: Int
+```
+
+```swift
+public let foo: Int
+```
+
+```swift
+public var foo: Int
+```
+
+```swift
+var foo: Int
+```
+
+```swift
+private final class A {
+  private(set) var value: Int
+}
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+↓private(set) private var foo: Int
+```
+
+```swift
+↓fileprivate(set) fileprivate var foo: Int
+```
+
+```swift
+↓internal(set) internal var foo: Int
+```
+
+```swift
+↓public(set) public var foo: Int
+```
+
+```swift
+open class Foo {
+  ↓open(set) open var bar: Int
+}
+```
+
+```swift
+class A {
+  ↓internal(set) var value: Int
+}
+```
+
+```swift
+fileprivate class A {
+  ↓fileprivate(set) var value: Int
+}
+```
+
 </details>
 
 
 
 ## Redundant String Enum Value
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`redundant_string_enum_value` | Enabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`redundant_string_enum_value` | Enabled | No | idiomatic | No | 3.0.0 
 
 String enum values can be omitted when they are equal to the enumcase name.
 
@@ -11069,41 +15924,36 @@ String enum values can be omitted when they are equal to the enumcase name.
 
 ```swift
 enum Numbers: String {
- case one
- case two
+  case one
+  case two
 }
-
 ```
 
 ```swift
 enum Numbers: Int {
- case one = 1
- case two = 2
+  case one = 1
+  case two = 2
 }
-
 ```
 
 ```swift
 enum Numbers: String {
- case one = "ONE"
- case two = "TWO"
+  case one = "ONE"
+  case two = "TWO"
 }
-
 ```
 
 ```swift
 enum Numbers: String {
- case one = "ONE"
- case two = "two"
+  case one = "ONE"
+  case two = "two"
 }
-
 ```
 
 ```swift
 enum Numbers: String {
- case one, two
+  case one, two
 }
-
 ```
 
 </details>
@@ -11112,24 +15962,82 @@ enum Numbers: String {
 
 ```swift
 enum Numbers: String {
- case one = ↓"one"
- case two = ↓"two"
+  case one = ↓"one"
+  case two = ↓"two"
 }
-
 ```
 
 ```swift
 enum Numbers: String {
- case one = ↓"one", two = ↓"two"
+  case one = ↓"one", two = ↓"two"
 }
-
 ```
 
 ```swift
 enum Numbers: String {
- case one, two = ↓"two"
+  case one, two = ↓"two"
 }
+```
 
+</details>
+
+
+
+## Redundant Type Annotation
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`redundant_type_annotation` | Disabled | Yes | idiomatic | No | 3.0.0 
+
+Variables should not have redundant type annotation
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+var url = URL()
+```
+
+```swift
+var url: CustomStringConvertible = URL()
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+var url↓:URL=URL()
+```
+
+```swift
+var url↓:URL = URL(string: "")
+```
+
+```swift
+var url↓: URL = URL()
+```
+
+```swift
+let url↓: URL = URL()
+```
+
+```swift
+lazy var url↓: URL = URL()
+```
+
+```swift
+let alphanumerics↓: CharacterSet = CharacterSet.alphanumerics
+```
+
+```swift
+class ViewController: UIViewController {
+  func someMethod() {
+    let myVar↓: Int = Int(5)
+  }
+}
 ```
 
 </details>
@@ -11138,9 +16046,9 @@ enum Numbers: String {
 
 ## Redundant Void Return
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`redundant_void_return` | Enabled | Yes | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`redundant_void_return` | Enabled | Yes | idiomatic | No | 3.0.0 
 
 Returning Void in a function declaration is redundant.
 
@@ -11215,9 +16123,8 @@ func foo()↓ -> Void {}
 
 ```swift
 protocol Foo {
- func foo()↓ -> Void
+  func foo()↓ -> Void
 }
-
 ```
 
 ```swift
@@ -11227,9 +16134,8 @@ func foo()↓ -> () {}
 
 ```swift
 protocol Foo {
- func foo()↓ -> ()
+  func foo()↓ -> ()
 }
-
 ```
 
 </details>
@@ -11238,9 +16144,9 @@ protocol Foo {
 
 ## Required Enum Case
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`required_enum_case` | Disabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`required_enum_case` | Disabled | No | lint | No | 3.0.0 
 
 Enums conforming to a specified protocol must implement a specific case(s).
 
@@ -11313,9 +16219,9 @@ enum MyNetworkResponse: String, NetworkResponsable {
 
 ## Returning Whitespace
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`return_arrow_whitespace` | Enabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`return_arrow_whitespace` | Enabled | Yes | style | No | 3.0.0 
 
 Return arrow and return type should be separated by a single space or on a separate line.
 
@@ -11406,9 +16312,9 @@ var abc = {(param: Int)↓->Bool in }
 
 ## Shorthand Operator
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`shorthand_operator` | Enabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`shorthand_operator` | Enabled | No | style | No | 3.0.0 
 
 Prefer shorthand operators (+=, -=, *=, /=) over doing the operation and assigning.
 
@@ -11676,9 +16582,9 @@ n = n - i / outputLength
 
 ## Single Test Class
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`single_test_class` | Disabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`single_test_class` | Disabled | No | style | No | 3.0.0 
 
 Test files should contain a single QuickSpec or XCTestCase class.
 
@@ -11751,9 +16657,9 @@ class TotoTests {  }
 
 ## Min or Max over Sorted First or Last
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`sorted_first_last` | Disabled | No | performance
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`sorted_first_last` | Disabled | No | performance | No | 3.0.0 
 
 Prefer using `min()` or `max()` over `sorted().first` or `sorted().last`
 
@@ -11778,13 +16684,21 @@ let min = myList.min(by: >)
 ```
 
 ```swift
-let min = myList.max()
+let max = myList.max()
 
 ```
 
 ```swift
-let min = myList.max(by: { $0 < $1 })
+let max = myList.max(by: { $0 < $1 })
 
+```
+
+```swift
+let message = messages.sorted(byKeyPath: #keyPath(Message.timestamp)).last
+```
+
+```swift
+let message = messages.sorted(byKeyPath: "timestamp", ascending: false).first
 ```
 
 </details>
@@ -11862,9 +16776,9 @@ let min = myList.max(by: { $0 < $1 })
 
 ## Sorted Imports
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`sorted_imports` | Disabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`sorted_imports` | Disabled | Yes | style | No | 3.0.0 
 
 Imports should be sorted.
 
@@ -11969,9 +16883,9 @@ import BBB
 
 ## Statement Position
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`statement_position` | Enabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`statement_position` | Enabled | Yes | style | No | 3.0.0 
 
 Else and catch should be on the same line, one space after the previous declaration.
 
@@ -12036,11 +16950,102 @@ catch {
 
 
 
+## Static Operator
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`static_operator` | Disabled | No | idiomatic | No | 3.0.0 
+
+Operators should be declared as static functions, not free functions.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+class A: Equatable {
+  static func == (lhs: A, rhs: A) -> Bool {
+    return false
+  }
+```
+
+```swift
+class A<T>: Equatable {
+    static func == <T>(lhs: A<T>, rhs: A<T>) -> Bool {
+        return false
+    }
+```
+
+```swift
+public extension Array where Element == Rule {
+  static func == (lhs: Array, rhs: Array) -> Bool {
+    if lhs.count != rhs.count { return false }
+    return !zip(lhs, rhs).contains { !$0.0.isEqualTo($0.1) }
+  }
+}
+```
+
+```swift
+private extension Optional where Wrapped: Comparable {
+  static func < (lhs: Optional, rhs: Optional) -> Bool {
+    switch (lhs, rhs) {
+    case let (lhs?, rhs?):
+      return lhs < rhs
+    case (nil, _?):
+      return true
+    default:
+      return false
+    }
+  }
+}
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+↓func == (lhs: A, rhs: A) -> Bool {
+  return false
+}
+```
+
+```swift
+↓func == <T>(lhs: A<T>, rhs: A<T>) -> Bool {
+  return false
+}
+```
+
+```swift
+↓func == (lhs: [Rule], rhs: [Rule]) -> Bool {
+  if lhs.count != rhs.count { return false }
+  return !zip(lhs, rhs).contains { !$0.0.isEqualTo($0.1) }
+}
+```
+
+```swift
+private ↓func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (lhs?, rhs?):
+    return lhs < rhs
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+```
+
+</details>
+
+
+
 ## Strict fileprivate
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`strict_fileprivate` | Disabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`strict_fileprivate` | Disabled | No | idiomatic | No | 3.0.0 
 
 `fileprivate` should be avoided.
 
@@ -12058,13 +17063,13 @@ private extension String {}
 ```
 
 ```swift
-public 
- extension String {}
+public
+extension String {}
 ```
 
 ```swift
-open extension 
- String {}
+open extension
+  String {}
 ```
 
 ```swift
@@ -12080,38 +17085,89 @@ internal extension String {}
 ```
 
 ```swift
-↓fileprivate 
- extension String {}
+↓fileprivate
+  extension String {}
 ```
 
 ```swift
-↓fileprivate extension 
- String {}
+↓fileprivate extension
+  String {}
 ```
 
 ```swift
 extension String {
-↓fileprivate func Something(){}
+  ↓fileprivate func Something(){}
 }
 ```
 
 ```swift
 class MyClass {
-↓fileprivate let myInt = 4
+  ↓fileprivate let myInt = 4
 }
 ```
 
 ```swift
 class MyClass {
-↓fileprivate(set) var myInt = 4
+  ↓fileprivate(set) var myInt = 4
 }
 ```
 
 ```swift
 struct Outter {
-struct Inter {
-↓fileprivate struct Inner {}
+  struct Inter {
+    ↓fileprivate struct Inner {}
+  }
 }
+```
+
+</details>
+
+
+
+## Strong IBOutlet
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`strong_iboutlet` | Disabled | No | lint | No | 3.0.0 
+
+@IBOutlets shouldn't be declared as weak.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+class ViewController: UIViewController {
+    @IBOutlet var label: UILabel?
+}
+```
+
+```swift
+class ViewController: UIViewController {
+    weak var label: UILabel?
+}
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+class ViewController: UIViewController {
+    @IBOutlet weak ↓var label: UILabel?
+}
+```
+
+```swift
+class ViewController: UIViewController {
+    @IBOutlet unowned ↓var label: UILabel!
+}
+```
+
+```swift
+class ViewController: UIViewController {
+    @IBOutlet weak ↓var textField: UITextField?
 }
 ```
 
@@ -12121,9 +17177,9 @@ struct Inter {
 
 ## Superfluous Disable Command
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`superfluous_disable_command` | Enabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`superfluous_disable_command` | Enabled | No | lint | No | 3.0.0 
 
 SwiftLint 'disable' commands are superfluous when the disabled rule would not have triggered a violation in the disabled region.
 
@@ -12131,11 +17187,11 @@ SwiftLint 'disable' commands are superfluous when the disabled rule would not ha
 
 ## Switch and Case Statement Alignment
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`switch_case_alignment` | Enabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`switch_case_alignment` | Enabled | No | style | No | 3.0.0 
 
-Case statements should vertically align with the enclosing switch statement.
+Case statements should vertically align with their enclosing switch statement, or indented if configured otherwise.
 
 ### Examples
 
@@ -12190,9 +17246,9 @@ default:
 ```swift
 switch someBool {
     ↓case true:
-         print('red')
+        print("red")
     ↓case false:
-         print('blue')
+        print("blue")
 }
 ```
 
@@ -12201,8 +17257,8 @@ if aBool {
     switch someBool {
         ↓case true:
             print('red')
-    case false:
-        print('blue')
+        ↓case false:
+            print('blue')
     }
 }
 ```
@@ -12210,11 +17266,31 @@ if aBool {
 ```swift
 switch someInt {
     ↓case 0:
-    print('Zero')
-case 1:
-    print('One')
+        print('Zero')
+    ↓case 1:
+        print('One')
     ↓default:
-    print('Some other number')
+        print('Some other number')
+}
+```
+
+```swift
+switch someBool {
+case true:
+    print('red')
+    ↓case false:
+        print('blue')
+}
+```
+
+```swift
+if aBool {
+    switch someBool {
+        ↓case true:
+        print('red')
+    case false:
+    print('blue')
+    }
 }
 ```
 
@@ -12224,9 +17300,9 @@ case 1:
 
 ## Switch Case on Newline
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`switch_case_on_newline` | Disabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`switch_case_on_newline` | Disabled | No | style | No | 3.0.0 
 
 Cases inside a switch should always be on a newline
 
@@ -12425,9 +17501,9 @@ switch foo {
 
 ## Syntactic Sugar
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`syntactic_sugar` | Enabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`syntactic_sugar` | Enabled | No | idiomatic | No | 3.0.0 
 
 Shorthand syntactic sugar should be used, i.e. [Int] instead of Array<Int>.
 
@@ -12457,15 +17533,15 @@ let x: Int!
 ```
 
 ```swift
-extension Array { 
- func x() { } 
- }
+extension Array {
+  func x() { }
+}
 ```
 
 ```swift
-extension Dictionary { 
- func x() { } 
- }
+extension Dictionary {
+  func x() { }
+}
 ```
 
 ```swift
@@ -12538,11 +17614,11 @@ let x: ↓Swift.Optional<String>
 
 ## Todo
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`todo` | Enabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`todo` | Enabled | No | lint | No | 3.0.0 
 
-TODOs and FIXMEs should be avoided.
+TODOs and FIXMEs should be resolved.
 
 ### Examples
 
@@ -12607,11 +17683,70 @@ TODOs and FIXMEs should be avoided.
 
 
 
+## Toggle Bool
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`toggle_bool` | Disabled | No | idiomatic | No | 4.2.0 
+
+Prefer `someBool.toggle()` over `someBool = !someBool`.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+isHidden.toggle()
+
+```
+
+```swift
+view.clipsToBounds.toggle()
+
+```
+
+```swift
+func foo() { abc.toggle() }
+```
+
+```swift
+view.clipsToBounds = !clipsToBounds
+
+```
+
+```swift
+disconnected = !connected
+
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+↓isHidden = !isHidden
+
+```
+
+```swift
+↓view.clipsToBounds = !view.clipsToBounds
+
+```
+
+```swift
+func foo() { ↓abc = !abc }
+```
+
+</details>
+
+
+
 ## Trailing Closure
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`trailing_closure` | Disabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`trailing_closure` | Disabled | No | style | No | 3.0.0 
 
 Trailing closure syntax should be used whenever possible.
 
@@ -12680,9 +17815,9 @@ offsets.sorted { $0.offset < $1.offset }
 
 ## Trailing Comma
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`trailing_comma` | Enabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`trailing_comma` | Enabled | Yes | style | No | 3.0.0 
 
 Trailing commas in arrays and dictionaries should be avoided/enforced.
 
@@ -12776,15 +17911,30 @@ let foo = ["אבג", "αβγ", "🇺🇸"↓,]
 
 ```
 
+```swift
+class C {
+ #if true
+ func f() {
+ let foo = [1, 2, 3↓,]
+ }
+ #endif
+}
+```
+
+```swift
+foo([1: "\(error)"↓,])
+
+```
+
 </details>
 
 
 
 ## Trailing Newline
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`trailing_newline` | Enabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`trailing_newline` | Enabled | Yes | style | No | 3.0.0 
 
 Files should have a single trailing newline.
 
@@ -12818,9 +17968,9 @@ let a = 0
 
 ## Trailing Semicolon
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`trailing_semicolon` | Enabled | Yes | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`trailing_semicolon` | Enabled | Yes | idiomatic | No | 3.0.0 
 
 Lines should not have trailing semicolons.
 
@@ -12870,9 +18020,9 @@ let a = 0↓; ; ;
 
 ## Trailing Whitespace
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`trailing_whitespace` | Enabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`trailing_whitespace` | Enabled | Yes | style | No | 3.0.0 
 
 Lines should not have trailing whitespace.
 
@@ -12926,9 +18076,9 @@ let name: String
 
 ## Type Body Length
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`type_body_length` | Enabled | No | metrics
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`type_body_length` | Enabled | No | metrics | No | 3.0.0 
 
 Type bodies should not span too many lines.
 
@@ -16052,9 +21202,9 @@ let abc = 0
 
 ## Type Name
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`type_name` | Enabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`type_name` | Enabled | No | idiomatic | No | 3.0.0 
 
 Type name should only contain alphanumeric characters, start with an uppercase character and span between 3 and 40 characters in length.
 
@@ -16109,14 +21259,14 @@ private typealias Foo = Void
 
 ```swift
 protocol Foo {
- associatedtype Bar
- }
+  associatedtype Bar
+}
 ```
 
 ```swift
 protocol Foo {
- associatedtype Bar: Equatable
- }
+  associatedtype Bar: Equatable
+}
 ```
 
 ```swift
@@ -16207,20 +21357,80 @@ typealias ↓AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA = Void
 
 ```swift
 protocol Foo {
- associatedtype ↓X
- }
+  associatedtype ↓X
+}
 ```
 
 ```swift
 protocol Foo {
- associatedtype ↓Foo_Bar: Equatable
- }
+  associatedtype ↓Foo_Bar: Equatable
+}
 ```
 
 ```swift
 protocol Foo {
- associatedtype ↓AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
- }
+  associatedtype ↓AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+}
+```
+
+</details>
+
+
+
+## Unavailable Function
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`unavailable_function` | Disabled | No | idiomatic | No | 4.1.0 
+
+Unimplemented functions should be marked as unavailable.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+class ViewController: UIViewController {
+  @available(*, unavailable)
+  public required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+}
+```
+
+```swift
+func jsonValue(_ jsonString: String) -> NSObject {
+   let data = jsonString.data(using: .utf8)!
+   let result = try! JSONSerialization.jsonObject(with: data, options: [])
+   if let dict = (result as? [String: Any])?.bridge() {
+    return dict
+   } else if let array = (result as? [Any])?.bridge() {
+    return array
+   }
+   fatalError()
+}
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+class ViewController: UIViewController {
+  public required ↓init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+}
+```
+
+```swift
+class ViewController: UIViewController {
+  public required ↓init?(coder aDecoder: NSCoder) {
+    let reason = "init(coder:) has not been implemented"
+    fatalError(reason)
+  }
+}
 ```
 
 </details>
@@ -16229,9 +21439,9 @@ protocol Foo {
 
 ## Unneeded Break in Switch
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`unneeded_break_in_switch` | Enabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`unneeded_break_in_switch` | Enabled | No | idiomatic | No | 3.0.0 
 
 Avoid using unneeded break statements.
 
@@ -16317,9 +21527,9 @@ case .foo, .foo2 where condition:
 
 ## Unneeded Parentheses in Closure Argument
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`unneeded_parentheses_in_closure_argument` | Disabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`unneeded_parentheses_in_closure_argument` | Disabled | Yes | style | No | 3.0.0 
 
 Parentheses are not needed when declaring closure arguments.
 
@@ -16375,15 +21585,131 @@ foo.map { ($0, $0) }.forEach { ↓(x, y) in }
 foo.bar { [weak self] ↓(x, y) in }
 ```
 
+```swift
+[].first { ↓(temp) in
+    [].first { ↓(temp) in
+        [].first { ↓(temp) in
+            _ = temp
+            return false
+        }
+        return false
+    }
+    return false
+}
+```
+
+```swift
+[].first { temp in
+    [].first { ↓(temp) in
+        [].first { ↓(temp) in
+            _ = temp
+            return false
+        }
+        return false
+    }
+    return false
+}
+```
+
+</details>
+
+
+
+## Untyped Error in Catch
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`untyped_error_in_catch` | Disabled | Yes | idiomatic | No | 3.0.0 
+
+Catch statements should not declare error variables without type casting.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+do {
+  try foo()
+} catch {}
+```
+
+```swift
+do {
+  try foo()
+} catch Error.invalidOperation {
+} catch {}
+```
+
+```swift
+do {
+  try foo()
+} catch let error as MyError {
+} catch {}
+```
+
+```swift
+do {
+  try foo()
+} catch var error as MyError {
+} catch {}
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+do {
+  try foo()
+} ↓catch var error {}
+```
+
+```swift
+do {
+  try foo()
+} ↓catch let error {}
+```
+
+```swift
+do {
+  try foo()
+} ↓catch let someError {}
+```
+
+```swift
+do {
+  try foo()
+} ↓catch var someError {}
+```
+
+```swift
+do {
+  try foo()
+} ↓catch let e {}
+```
+
+```swift
+do {
+  try foo()
+} ↓catch(let error) {}
+```
+
+```swift
+do {
+  try foo()
+} ↓catch (let error) {}
+```
+
 </details>
 
 
 
 ## Unused Closure Parameter
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`unused_closure_parameter` | Enabled | Yes | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`unused_closure_parameter` | Enabled | Yes | lint | No | 3.0.0 
 
 Unused parameter in a closure should be replaced with _.
 
@@ -16471,6 +21797,12 @@ hoge(arg: num) { num in
 })(FileManager.default)
 ```
 
+```swift
+withPostSideEffect { input in
+    if true { print("\(input)") }
+}
+```
+
 </details>
 <details>
 <summary>Triggering Examples</summary>
@@ -16527,15 +21859,113 @@ fooFunc { ↓아 in
  }
 ```
 
+```swift
+func foo () {
+ bar { ↓number in
+ return 3
+}
+
+```
+
+</details>
+
+
+
+## Unused Control Flow Label
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`unused_control_flow_label` | Enabled | Yes | lint | No | 3.0.0 
+
+Unused control flow label should be removed.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+loop: while true { break loop }
+```
+
+```swift
+loop: while true { continue loop }
+```
+
+```swift
+loop:
+    while true { break loop }
+```
+
+```swift
+while true { break }
+```
+
+```swift
+loop: for x in array { break loop }
+```
+
+```swift
+label: switch number {
+case 1: print("1")
+case 2: print("2")
+default: break label
+}
+```
+
+```swift
+loop: repeat {
+    if x == 10 {
+        break loop
+    }
+} while true
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+↓loop: while true { break }
+```
+
+```swift
+↓loop: while true { break loop1 }
+```
+
+```swift
+↓loop: while true { break outerLoop }
+```
+
+```swift
+↓loop: for x in array { break }
+```
+
+```swift
+↓label: switch number {
+case 1: print("1")
+case 2: print("2")
+default: break
+}
+```
+
+```swift
+↓loop: repeat {
+    if x == 10 {
+        break
+    }
+} while true
+```
+
 </details>
 
 
 
 ## Unused Enumerated
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`unused_enumerated` | Enabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`unused_enumerated` | Enabled | No | idiomatic | No | 3.0.0 
 
 When the index or the item is not used, `.enumerated()` can be removed.
 
@@ -16617,11 +22047,77 @@ for (idx, ↓_) in bar.enumerated() { }
 
 
 
+## Unused Import
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`unused_import` | Disabled | Yes | lint | Yes | 3.0.0 
+
+All imported modules should be required to make the file compile.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+import Dispatch
+dispatchMain()
+```
+
+```swift
+@testable import Dispatch
+dispatchMain()
+```
+
+```swift
+import Foundation
+@objc
+class A {}
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+↓import Dispatch
+struct A {
+  static func dispatchMain() {}
+}
+A.dispatchMain()
+```
+
+```swift
+↓import Foundation
+struct A {
+  static func dispatchMain() {}
+}
+A.dispatchMain()
+↓import Dispatch
+
+```
+
+```swift
+↓import Foundation
+dispatchMain()
+```
+
+```swift
+↓import Foundation
+// @objc
+class A {}
+```
+
+</details>
+
+
+
 ## Unused Optional Binding
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`unused_optional_binding` | Enabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`unused_optional_binding` | Enabled | No | style | No | 3.0.0 
 
 Prefer `!= nil` over `let _ =`
 
@@ -16727,11 +22223,151 @@ if case .some(let ↓_) = self {}
 
 
 
+## Unused Private Declaration
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`unused_private_declaration` | Disabled | No | lint | Yes | 3.0.0 
+
+Private declarations should be referenced in that file.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+private let kConstant = 0
+_ = kConstant
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+private let ↓kConstant = 0
+```
+
+</details>
+
+
+
+## Unused Setter Value
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`unused_setter_value` | Enabled | No | lint | No | 3.0.0 
+
+Setter value is not used.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+var aValue: String {
+    get {
+        return Persister.shared.aValue
+    }
+    set {
+        Persister.shared.aValue = newValue
+    }
+}
+```
+
+```swift
+var aValue: String {
+    set {
+        Persister.shared.aValue = newValue
+    }
+    get {
+        return Persister.shared.aValue
+    }
+}
+```
+
+```swift
+var aValue: String {
+    get {
+        return Persister.shared.aValue
+    }
+    set(value) {
+        Persister.shared.aValue = value
+    }
+}
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+var aValue: String {
+    get {
+        return Persister.shared.aValue
+    }
+    ↓set {
+        Persister.shared.aValue = aValue
+    }
+}
+```
+
+```swift
+var aValue: String {
+    ↓set {
+        Persister.shared.aValue = aValue
+    }
+    get {
+        return Persister.shared.aValue
+    }
+}
+```
+
+```swift
+var aValue: String {
+    get {
+        return Persister.shared.aValue
+    }
+    ↓set {
+        Persister.shared.aValue = aValue
+    }
+}
+```
+
+```swift
+var aValue: String {
+    get {
+        let newValue = Persister.shared.aValue
+        return newValue
+    }
+    ↓set {
+        Persister.shared.aValue = aValue
+    }
+}
+```
+
+```swift
+var aValue: String {
+    get {
+        return Persister.shared.aValue
+    }
+    ↓set(value) {
+        Persister.shared.aValue = aValue
+    }
+}
+```
+
+</details>
+
+
+
 ## Valid IBInspectable
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`valid_ibinspectable` | Enabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`valid_ibinspectable` | Enabled | No | lint | No | 3.0.0 
 
 @IBInspectable should be applied to variables only, have its type explicit and be of a supported type
 
@@ -16862,9 +22498,9 @@ class Foo {
 
 ## Vertical Parameter Alignment
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`vertical_parameter_alignment` | Enabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`vertical_parameter_alignment` | Enabled | No | style | No | 3.0.0 
 
 Function parameters should be aligned vertically if they're in multiple lines in a declaration.
 
@@ -16966,9 +22602,9 @@ func validateFunction(_ file: File,
 
 ## Vertical Parameter Alignment On Call
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`vertical_parameter_alignment_on_call` | Disabled | No | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`vertical_parameter_alignment_on_call` | Disabled | No | style | No | 3.0.0 
 
 Function parameters should be aligned vertically if they're in multiple lines in a method call.
 
@@ -17080,9 +22716,9 @@ foo(param1: 1, param2: { _ in },
 
 ## Vertical Whitespace
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`vertical_whitespace` | Enabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`vertical_whitespace` | Enabled | Yes | style | No | 3.0.0 
 
 Limit vertical whitespace to a single empty line.
 
@@ -17146,11 +22782,475 @@ class BBBB {}
 
 
 
+## Vertical Whitespace Between Cases
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`vertical_whitespace_between_cases` | Disabled | Yes | style | No | 3.0.0 
+
+Include a single empty line between switch cases.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+    switch x {
+    case .valid:
+        print("multiple ...")
+        print("... lines")
+
+    case .invalid:
+        print("multiple ...")
+        print("... lines")
+    }
+```
+
+```swift
+    switch x {
+    case .valid:
+        print("x is valid")
+
+    case .invalid:
+        print("x is invalid")
+    }
+```
+
+```swift
+    switch x {
+    case 0..<5:
+        print("x is valid")
+
+    default:
+        print("x is invalid")
+    }
+```
+
+```swift
+switch x {
+
+case 0..<5:
+    print("x is low")
+
+case 5..<10:
+    print("x is high")
+
+default:
+    print("x is invalid")
+
+}
+```
+
+```swift
+switch x {
+case 0..<5:
+    print("x is low")
+
+case 5..<10:
+    print("x is high")
+
+default:
+    print("x is invalid")
+}
+```
+
+```swift
+switch x {
+case 0..<5: print("x is low")
+case 5..<10: print("x is high")
+default: print("x is invalid")
+}
+```
+
+```swift
+switch x {    
+case 1:    
+    print("one")    
+    
+default:    
+    print("not one")    
+}    
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+    switch x {
+    case .valid:
+        print("multiple ...")
+        print("... lines")
+↓    case .invalid:
+        print("multiple ...")
+        print("... lines")
+    }
+```
+
+```swift
+    switch x {
+    case .valid:
+        print("x is valid")
+↓    case .invalid:
+        print("x is invalid")
+    }
+```
+
+```swift
+    switch x {
+    case 0..<5:
+        print("x is valid")
+↓    default:
+        print("x is invalid")
+    }
+```
+
+</details>
+
+
+
+## Vertical Whitespace before Closing Braces
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`vertical_whitespace_closing_braces` | Disabled | Yes | style | No | 3.0.0 
+
+Don't include vertical whitespace (empty line) before closing braces.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+        )
+}
+    }
+}
+```
+
+```swift
+    print("x is 5")
+}
+```
+
+```swift
+    print("x is 5")
+}
+```
+
+```swift
+    print("x is 5")
+}
+```
+
+```swift
+/*
+    class X {
+
+        let x = 5
+
+    }
+*/
+```
+
+```swift
+[
+1,
+2,
+3
+]
+```
+
+```swift
+[1, 2].map { $0 }.filter {
+```
+
+```swift
+[1, 2].map { $0 }.filter { num in
+```
+
+```swift
+class Name {
+    run(5) { x in print(x) }
+}
+```
+
+```swift
+foo(
+x: 5,
+y:6
+)
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+        )
+}
+↓
+    }
+}
+```
+
+```swift
+    print("x is 5")
+↓
+
+}
+```
+
+```swift
+    print("x is 5")
+↓
+}
+```
+
+```swift
+    print("x is 5")
+↓    
+}
+```
+
+```swift
+[
+1,
+2,
+3
+↓
+]
+```
+
+```swift
+class Name {
+    run(5) { x in print(x) }
+↓
+}
+```
+
+```swift
+foo(
+x: 5,
+y:6
+↓
+)
+```
+
+</details>
+
+
+
+## Vertical Whitespace after Opening Braces
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`vertical_whitespace_opening_braces` | Disabled | Yes | style | No | 3.0.0 
+
+Don't include vertical whitespace (empty line) after opening braces.
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+/*
+    class X {
+
+        let x = 5
+
+    }
+*/
+```
+
+```swift
+// [1, 2].map { $0 }.filter { num in
+```
+
+```swift
+KingfisherManager.shared.retrieveImage(with: url, options: nil, progressBlock: nil) { image, _, _, _ in
+    guard let img = image else { return }
+```
+
+```swift
+[
+1,
+2,
+3
+]
+```
+
+```swift
+[1, 2].map { $0 }.filter { num in
+```
+
+```swift
+[1, 2].map { $0 }.foo()
+```
+
+```swift
+class Name {
+    run(5) { x in print(x) }
+}
+```
+
+```swift
+class X {
+    struct Y {
+    class Z {
+
+```
+
+```swift
+foo(
+x: 5,
+y:6
+)
+```
+
+```swift
+if x == 5 {
+	print("x is 5")
+```
+
+```swift
+if x == 5 {
+    print("x is 5")
+```
+
+```swift
+if x == 5 {
+    print("x is 5")
+```
+
+```swift
+if x == 5 {
+  print("x is 5")
+```
+
+```swift
+struct MyStruct {
+	let x = 5
+```
+
+```swift
+struct MyStruct {
+    let x = 5
+```
+
+```swift
+struct MyStruct {
+  let x = 5
+```
+
+```swift
+}) { _ in
+    self.dismiss(animated: false, completion: {
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+KingfisherManager.shared.retrieveImage(with: url, options: nil, progressBlock: nil) { image, _, _, _ in
+↓
+    guard let img = image else { return }
+```
+
+```swift
+[
+↓
+1,
+2,
+3
+]
+```
+
+```swift
+class Name {
+↓
+    run(5) { x in print(x) }
+}
+```
+
+```swift
+class X {
+    struct Y {
+↓
+    class Z {
+
+```
+
+```swift
+foo(
+↓
+x: 5,
+y:6
+)
+```
+
+```swift
+if x == 5 {
+↓
+	print("x is 5")
+```
+
+```swift
+if x == 5 {
+↓
+
+    print("x is 5")
+```
+
+```swift
+if x == 5 {
+↓
+    print("x is 5")
+```
+
+```swift
+if x == 5 {
+↓
+  print("x is 5")
+```
+
+```swift
+struct MyStruct {
+↓
+	let x = 5
+```
+
+```swift
+struct MyStruct {
+↓
+    let x = 5
+```
+
+```swift
+struct MyStruct {
+↓
+  let x = 5
+```
+
+```swift
+}) { _ in
+↓
+    self.dismiss(animated: false, completion: {
+```
+
+</details>
+
+
+
 ## Void Return
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`void_return` | Enabled | Yes | style
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`void_return` | Enabled | Yes | style | No | 3.0.0 
 
 Prefer `-> Void` over `-> ()`.
 
@@ -17239,9 +23339,9 @@ let foo: (ConfigurationTests) -> () throws -> ↓())
 
 ## Weak Delegate
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`weak_delegate` | Enabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`weak_delegate` | Enabled | No | lint | No | 3.0.0 
 
 Delegates should be weak to avoid reference cycles.
 
@@ -17338,11 +23438,320 @@ class Foo {
 
 
 
+## XCTest Specific Matcher
+
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`xct_specific_matcher` | Disabled | No | idiomatic | No | 4.1.0 
+
+Prefer specific XCTest matchers over `XCTAssertEqual` and `XCTAssertNotEqual`
+
+### Examples
+
+<details>
+<summary>Non Triggering Examples</summary>
+
+```swift
+XCTAssertFalse(foo)
+```
+
+```swift
+XCTAssertTrue(foo)
+```
+
+```swift
+XCTAssertNil(foo)
+```
+
+```swift
+XCTAssertNotNil(foo)
+```
+
+```swift
+XCTAssertEqual(foo, 2)
+```
+
+```swift
+XCTAssertNotEqual(foo, "false")
+```
+
+```swift
+XCTAssertEqual(foo, [1, 2, 3, true])
+```
+
+```swift
+XCTAssertEqual(foo, [1, 2, 3, false])
+```
+
+```swift
+XCTAssertEqual(foo, [1, 2, 3, nil])
+```
+
+```swift
+XCTAssertEqual(foo, [true, nil, true, nil])
+```
+
+```swift
+XCTAssertEqual([1, 2, 3, true], foo)
+```
+
+```swift
+XCTAssertEqual([1, 2, 3, false], foo)
+```
+
+```swift
+XCTAssertEqual([1, 2, 3, nil], foo)
+```
+
+```swift
+XCTAssertEqual([true, nil, true, nil], foo)
+```
+
+```swift
+XCTAssertEqual(2, foo)
+```
+
+```swift
+XCTAssertNotEqual("false", foo)
+```
+
+```swift
+XCTAssertEqual(false, foo?.bar)
+```
+
+```swift
+XCTAssertEqual(true, foo?.bar)
+```
+
+```swift
+XCTAssertFalse(  foo  )
+```
+
+```swift
+XCTAssertTrue(  foo  )
+```
+
+```swift
+XCTAssertNil(  foo  )
+```
+
+```swift
+XCTAssertNotNil(  foo  )
+```
+
+```swift
+XCTAssertEqual(  foo  , 2  )
+```
+
+```swift
+XCTAssertNotEqual(  foo, "false")
+```
+
+```swift
+XCTAssertEqual(foo?.bar, false)
+```
+
+```swift
+XCTAssertEqual(foo?.bar, true)
+```
+
+```swift
+XCTAssertNil(foo?.bar)
+```
+
+```swift
+XCTAssertNotNil(foo?.bar)
+```
+
+```swift
+XCTAssertEqual(foo?.bar, 2)
+```
+
+```swift
+XCTAssertNotEqual(foo?.bar, "false")
+```
+
+```swift
+XCTAssertEqual(foo?.bar, toto())
+```
+
+```swift
+XCTAssertEqual(foo?.bar, .toto(.zoo))
+```
+
+```swift
+XCTAssertEqual(toto(), foo?.bar)
+```
+
+```swift
+XCTAssertEqual(.toto(.zoo), foo?.bar)
+```
+
+</details>
+<details>
+<summary>Triggering Examples</summary>
+
+```swift
+↓XCTAssertEqual(foo, true)
+```
+
+```swift
+↓XCTAssertEqual(foo, false)
+```
+
+```swift
+↓XCTAssertEqual(foo, nil)
+```
+
+```swift
+↓XCTAssertNotEqual(foo, true)
+```
+
+```swift
+↓XCTAssertNotEqual(foo, false)
+```
+
+```swift
+↓XCTAssertNotEqual(foo, nil)
+```
+
+```swift
+↓XCTAssertEqual(true, foo)
+```
+
+```swift
+↓XCTAssertEqual(false, foo)
+```
+
+```swift
+↓XCTAssertEqual(nil, foo)
+```
+
+```swift
+↓XCTAssertNotEqual(true, foo)
+```
+
+```swift
+↓XCTAssertNotEqual(false, foo)
+```
+
+```swift
+↓XCTAssertNotEqual(nil, foo)
+```
+
+```swift
+↓XCTAssertEqual(foo, true, "toto")
+```
+
+```swift
+↓XCTAssertEqual(foo, false, "toto")
+```
+
+```swift
+↓XCTAssertEqual(foo, nil, "toto")
+```
+
+```swift
+↓XCTAssertNotEqual(foo, true, "toto")
+```
+
+```swift
+↓XCTAssertNotEqual(foo, false, "toto")
+```
+
+```swift
+↓XCTAssertNotEqual(foo, nil, "toto")
+```
+
+```swift
+↓XCTAssertEqual(true, foo, "toto")
+```
+
+```swift
+↓XCTAssertEqual(false, foo, "toto")
+```
+
+```swift
+↓XCTAssertEqual(nil, foo, "toto")
+```
+
+```swift
+↓XCTAssertNotEqual(true, foo, "toto")
+```
+
+```swift
+↓XCTAssertNotEqual(false, foo, "toto")
+```
+
+```swift
+↓XCTAssertNotEqual(nil, foo, "toto")
+```
+
+```swift
+↓XCTAssertEqual(foo,true)
+```
+
+```swift
+↓XCTAssertEqual( foo , false )
+```
+
+```swift
+↓XCTAssertEqual(  foo  ,  nil  )
+```
+
+```swift
+↓XCTAssertEqual(true, [1, 2, 3, true].hasNumbers())
+```
+
+```swift
+↓XCTAssertEqual([1, 2, 3, true].hasNumbers(), true)
+```
+
+```swift
+↓XCTAssertEqual(foo?.bar, nil)
+```
+
+```swift
+↓XCTAssertNotEqual(foo?.bar, nil)
+```
+
+```swift
+↓XCTAssertEqual(nil, true)
+```
+
+```swift
+↓XCTAssertEqual(nil, false)
+```
+
+```swift
+↓XCTAssertEqual(true, nil)
+```
+
+```swift
+↓XCTAssertEqual(false, nil)
+```
+
+```swift
+↓XCTAssertEqual(nil, nil)
+```
+
+```swift
+↓XCTAssertEqual(true, true)
+```
+
+```swift
+↓XCTAssertEqual(false, false)
+```
+
+</details>
+
+
+
 ## XCTFail Message
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`xctfail_message` | Enabled | No | idiomatic
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`xctfail_message` | Enabled | No | idiomatic | No | 3.0.0 
 
 An XCTFail call should include a description of the assertion.
 
@@ -17353,13 +23762,13 @@ An XCTFail call should include a description of the assertion.
 
 ```swift
 func testFoo() {
-    XCTFail("bar")
+  XCTFail("bar")
 }
 ```
 
 ```swift
 func testFoo() {
-    XCTFail(bar)
+  XCTFail(bar)
 }
 ```
 
@@ -17369,13 +23778,13 @@ func testFoo() {
 
 ```swift
 func testFoo() {
-    ↓XCTFail()
+  ↓XCTFail()
 }
 ```
 
 ```swift
 func testFoo() {
-    ↓XCTFail("")
+  ↓XCTFail("")
 }
 ```
 
@@ -17385,9 +23794,9 @@ func testFoo() {
 
 ## Yoda condition rule
 
-Identifier | Enabled by default | Supports autocorrection | Kind 
---- | --- | --- | ---
-`yoda_condition` | Disabled | No | lint
+Identifier | Enabled by default | Supports autocorrection | Kind | Analyzer | Minimum Swift Compiler Version
+--- | --- | --- | --- | --- | ---
+`yoda_condition` | Disabled | No | lint | No | 3.0.0 
 
 The variable should be placed on the left, the constant on the right of a comparison operator.
 

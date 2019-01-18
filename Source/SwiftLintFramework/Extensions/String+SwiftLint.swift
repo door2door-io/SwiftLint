@@ -1,11 +1,3 @@
-//
-//  String+SwiftLint.swift
-//  SwiftLint
-//
-//  Created by JP Simard on 5/16/15.
-//  Copyright © 2015 Realm. All rights reserved.
-//
-
 import Foundation
 import SourceKittenFramework
 
@@ -79,6 +71,10 @@ extension String {
         return fromIndex..<toIndex
     }
 
+    internal var fullNSRange: NSRange {
+        return NSRange(location: 0, length: utf16.count)
+    }
+
     public func absolutePathStandardized() -> String {
         return bridge().absolutePathRepresentation().bridge().standardizingPath
     }
@@ -86,11 +82,7 @@ extension String {
     internal var isFile: Bool {
         var isDirectoryObjC: ObjCBool = false
         if FileManager.default.fileExists(atPath: self, isDirectory: &isDirectoryObjC) {
-            #if os(Linux)
-                return !isDirectoryObjC
-            #else
-                return !isDirectoryObjC.boolValue
-            #endif
+            return !isDirectoryObjC.boolValue
         }
         return false
     }

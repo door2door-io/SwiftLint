@@ -1,11 +1,3 @@
-//
-//  RequiredEnumCaseRuleTestCase.swift
-//  SwiftLint
-//
-//  Created by Ritter, Donald (CONT) on 9/13/17.
-//  Copyright © 2017 Realm. All rights reserved.
-//
-
 import Foundation
 @testable import SwiftLintFramework
 import XCTest
@@ -32,7 +24,7 @@ class RequiredEnumCaseRuleTestCase: XCTestCase {
 
     func testRequiredCaseHashValue() {
         let requiredCase = RequiredCase(name: "success")
-        XCTAssertEqual(requiredCase.hashValue, "success".hashValue)
+        XCTAssertEqual(requiredCase.hashValue, RequiredCase(name: "success").hashValue)
     }
 
     func testRequiredCaseEquatableReturnsTrue() {
